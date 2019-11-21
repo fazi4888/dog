@@ -1,4 +1,4 @@
-package frogger;
+package frogger.model;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;

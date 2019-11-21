@@ -1,4 +1,4 @@
-package frogger;
+package frogger.model;
 
 import java.io.File;
 

@@ -1,5 +1,6 @@
-package frogger;
+package frogger.model;
 
+import frogger.model.Actor;
 import javafx.scene.image.Image;
 
 public class Obstacle extends Actor {
