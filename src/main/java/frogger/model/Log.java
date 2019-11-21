@@ -1,5 +1,6 @@
-package frogger;
+package frogger.model;
 
+import frogger.model.Actor;
 import javafx.scene.image.Image;
 
 public class Log extends Actor {
@@ -20,7 +21,6 @@ public class Log extends Actor {
     setX(xpos);
     setY(ypos);
     speed = s;
-
   }
 
   public boolean getLeft() {
