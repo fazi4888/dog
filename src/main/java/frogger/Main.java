@@ -1,8 +1,7 @@
 package frogger;
 
 import frogger.model.Animal;
-import frogger.model.Digit;
-import frogger.model.MyStage;
+import frogger.util.MusicPlayer;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
   AnimationTimer timer;
-  MyStage background;
+//  MusicPlayer background;
   Animal animal;
   private static Stage stage;
 //  private static Scene scene;
@@ -34,7 +33,7 @@ public class Main extends Application {
     stage.setResizable(false);
     stage.setScene(scene);
     stage.show();
-
+    MusicPlayer.getInstance().playMusic();
 
 //    background = new MyStage();
 //    Scene scene = new Scene(background, 600, 800);
@@ -113,9 +112,9 @@ public class Main extends Application {
         }
         if (animal.getStop()) {
           System.out.print("STOPP:");
-          background.stopMusic();
+//          background.stopMusic();
           stop();
-          background.stop();
+//          background.stop();
           Alert alert = new Alert(AlertType.INFORMATION);
           alert.setTitle("You Have Won The Game!");
           alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
@@ -127,7 +126,7 @@ public class Main extends Application {
   }
 
   public void start() {
-    background.playMusic();
+//    background.playMusic();
     createTimer();
     timer.start();
   }
@@ -142,7 +141,7 @@ public class Main extends Application {
       int d = n / 10;
       int k = n - d * 10;
       n = d;
-      background.add(new Digit(k, 30, 360 - shift, 25));
+//      background.add(new Digit(k, 30, 360 - shift, 25));
       shift += 30;
     }
   }

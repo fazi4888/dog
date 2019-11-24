@@ -43,7 +43,17 @@
    <top>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="526.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchMusicState" prefHeight="46.0" prefWidth="49.0" styleClass="music" />
+            <Button fx:id="musicoff" layoutX="526.0" layoutY="21.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="49.0">
+               <styleClass>
+                  <String fx:value="music--off" />
+                  <String fx:value="music" />
+               </styleClass>
+            </Button>
+            <Button fx:id="musicon" layoutX="526.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchMusicState" prefHeight="46.0" prefWidth="49.0">
+               <styleClass>
+                  <String fx:value="music--on" />
+                  <String fx:value="music" />
+               </styleClass></Button>
          </children>
       </Pane>
    </top>
