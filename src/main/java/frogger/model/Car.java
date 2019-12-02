@@ -1,9 +1,8 @@
 package frogger.model;
 
-import frogger.model.Actor;
 import javafx.scene.image.Image;
 
-public class Obstacle extends Actor {
+public class Car extends Movable {
   private int speed;
 
   @Override
@@ -15,7 +14,7 @@ public class Obstacle extends Actor {
       setX(600);
   }
 
-  public Obstacle(String imageLink, int xpos, int ypos, int s, int w, int h) {
+  public Car(String imageLink, int xpos, int ypos, int s, int w, int h) {
     setImage(new Image(imageLink, w, h, true, true));
     setX(xpos);
     setY(ypos);

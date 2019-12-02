@@ -1,9 +1,8 @@
 package frogger.model;
 
-import frogger.model.Actor;
 import javafx.scene.image.Image;
 
-public class End extends Actor {
+public class End extends Movable {
   boolean activated = false;
 
   @Override
