@@ -8,20 +8,11 @@ import java.util.Objects;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-public class MusicPlayer {
-
-  private static class MusicPlayerHolder {
-    private static final MusicPlayer INSTANCE = new MusicPlayer();
-  }
+public enum MusicPlayer {
+  INSTANCE;
 
   private MediaPlayer mediaPlayer;
   private boolean isOn;
-
-  private MusicPlayer() {}
-
-  public static MusicPlayer getInstance() {
-    return MusicPlayerHolder.INSTANCE;
-  }
 
   public boolean isOn() {
     return isOn;
@@ -47,5 +38,4 @@ public class MusicPlayer {
     mediaPlayer.stop();
     isOn = false;
   }
-
 }
