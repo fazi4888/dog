@@ -3,42 +3,34 @@
     -fx-background-size: 100%;
 }
 
-.music {
-    -fx-background-image: url("../image/home/musicon.png");
-    -fx-background-color: transparent;
-    -fx-background-size: 100%;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
-}
-
 .menu {
     -fx-alignment: center;
 }
 
-.item {
+.menu__item {
     -fx-alignment: center;
     -fx-background-color: transparent;
     -fx-background-size: 85%;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
-    -fx-padding: 60px;
+    -fx-padding: 80px;
     -fx-effect: dropshadow(three-pass-box, #444444, 15, 0, 0, 0);
-    -fx-opacity: 0.9;
+    -fx-opacity: 0.85;
 }
 
-.item:hover {
+.menu__item:hover {
     -fx-background-size: 95%;
     -fx-opacity: 1;
 }
 
-#start {
+.menu__item--start {
     -fx-background-image: url("../image/home/startbtn.png");
 }
 
-#scoreboard {
+.menu__item--scoreboard {
     -fx-background-image: url("../image/home/scoreboardbtn.png");
 }
 
-#exit {
+.menu__item--exit {
     -fx-background-image: url("../image/home/exitbtn.png");
 }

@@ -1,57 +1,54 @@
 package frogger;
 
-import frogger.model.Animal;
-import frogger.model.Digit;
-import frogger.model.MyStage;
+import frogger.model.Frog;
+import frogger.util.SceneSwitch;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
   AnimationTimer timer;
-  MyStage background;
-  Animal animal;
-  private static Stage stage;
-//  private static Scene scene;
+  //  MusicPlayer background;
+  Frog frog;
+  private static Stage primaryStage;
 
   public static void main(String[] args) {
     launch(args);
   }
 
+  public static Stage getPrimaryStage() {
+    return primaryStage;
+  }
+
   @Override
   public void start(Stage primaryStage) throws Exception {
-    Main.stage = primaryStage;
+    Main.primaryStage = primaryStage;
 
-    BorderPane root = FXMLLoader.load(getClass().getResource("/frogger/view/home.fxml"));
-    Scene scene = new Scene(root);
+//    Pane root = FXMLLoader.load(getClass().getResource("/frogger/view/home.fxml"));
+//    Scene scene = new Scene(root);
 
-    stage.setTitle("Frogger");
-    stage.setResizable(false);
-    stage.setScene(scene);
-    stage.show();
+    Main.primaryStage.setTitle("Frogger");
+    Main.primaryStage.setResizable(false);
+//    SceneSwitch.INSTANCE.initializeScene();
+    SceneSwitch.INSTANCE.switchToHome();
+//    Main.primaryStage.setScene(scene);
+//    Main.primaryStage.show();
 
+    //    background = new MyStage();
+    //    Scene scene = new Scene(background, 600, 800);
 
-//    background = new MyStage();
-//    Scene scene = new Scene(background, 600, 800);
-
-    //add background image
+    // add background image
     /*
     BackgroundImage froggerback = new BackgroundImage(this.getClass().getResource("image/iKogsKW.png").getPath());
     background.add(froggerback);
     */
 
-
     /* add logs
     background.add(new Log("/frogger/image/log/log3.png", 150, 0, 166, 0.75));
     background.add(new Log("/frogger/image/log/log3.png", 150, 220, 166, 0.75));
     background.add(new Log("/frogger/image/log/log3.png", 150, 440, 166, 0.75));
-    background.add(new Log("/frogger/image/log/logs.png", 300, 0, 276, -2));
-    background.add(new Log("/frogger/image/log/logs.png", 300, 400, 276, -2));
+    background.add(new Log("/frogger/image/log/log1.png", 300, 0, 276, -2));
+    background.add(new Log("/frogger/image/log/log1.png", 300, 400, 276, -2));
     background.add(new Log("/frogger/image/log/log3.png", 150, 50, 329, 0.75));
     background.add(new Log("/frogger/image/log/log3.png", 150, 270, 329, 0.75));
     background.add(new Log("/frogger/image/log/log3.png", 150, 490, 329, 0.75));
@@ -93,41 +90,42 @@ public class Main extends Application {
     background.add(new Digit(0, 30, 360, 25));
      */
 
-
     /*
 
     background.start();
-
-    primaryStage.setScene(scene);
-    primaryStage.show();
-    start();
     */
+
+//    primaryStage.setScene(scene);
+//    primaryStage.show();
+//    start();
   }
 
+  /*
   public void createTimer() {
-    timer = new AnimationTimer() {
-      @Override
-      public void handle(long now) {
-        if (animal.changeScore()) {
-          setNumber(animal.getPoints());
-        }
-        if (animal.getStop()) {
-          System.out.print("STOPP:");
-          background.stopMusic();
-          stop();
-          background.stop();
-          Alert alert = new Alert(AlertType.INFORMATION);
-          alert.setTitle("You Have Won The Game!");
-          alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
-          alert.setContentText("Highest Possible Score: 800");
-          alert.show();
-        }
-      }
-    };
+    timer =
+        new AnimationTimer() {
+          @Override
+          public void handle(long now) {
+            if (animal.changeScore()) {
+              setNumber(animal.getPoints());
+            }
+            if (animal.getStop()) {
+              System.out.print("STOPP:");
+              //          background.stopMusic();
+              stop();
+              //          background.stop();
+              Alert alert = new Alert(AlertType.INFORMATION);
+              alert.setTitle("You Have Won The Game!");
+              alert.setHeaderText("Your High Score: " + animal.getPoints() + "!");
+              alert.setContentText("Highest Possible Score: 800");
+              alert.show();
+            }
+          }
+        };
   }
 
   public void start() {
-    background.playMusic();
+    //    background.playMusic();
     createTimer();
     timer.start();
   }
@@ -142,8 +140,9 @@ public class Main extends Application {
       int d = n / 10;
       int k = n - d * 10;
       n = d;
-      background.add(new Digit(k, 30, 360 - shift, 25));
+      //      background.add(new Digit(k, 30, 360 - shift, 25));
       shift += 30;
     }
   }
+   */
 }

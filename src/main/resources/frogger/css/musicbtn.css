@@ -1,0 +1,16 @@
+.music {
+    -fx-background-color: transparent;
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.music--on {
+    -fx-background-image: url("../image/home/musicon.png");
+    -fx-opacity: 1;
+}
+
+.music--off {
+    -fx-background-image: url("../image/home/musicoff.png");
+    -fx-opacity: 0;
+}
