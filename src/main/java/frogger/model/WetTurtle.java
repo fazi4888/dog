@@ -1,9 +1,8 @@
 package frogger.model;
 
-import frogger.model.Actor;
 import javafx.scene.image.Image;
 
-public class WetTurtle extends Actor {
+public class WetTurtle extends Movable {
   Image turtle1;
   Image turtle2;
   Image turtle3;
@@ -39,10 +38,10 @@ public class WetTurtle extends Actor {
   }
 
   public WetTurtle(int xpos, int ypos, int s, int w, int h) {
-    turtle1 = new Image("file:src/p4_group_8_repo/TurtleAnimation1.png", w, h, true, true);
-    turtle2 = new Image("file:src/p4_group_8_repo/TurtleAnimation2Wet.png", w, h, true, true);
-    turtle3 = new Image("file:src/p4_group_8_repo/TurtleAnimation3Wet.png", w, h, true, true);
-    turtle4 = new Image("file:src/p4_group_8_repo/TurtleAnimation4Wet.png", w, h, true, true);
+    turtle1 = new Image("/frogger/image/turtle/TurtleAnimation1.png", w, h, true, true);
+    turtle2 = new Image("/frogger/image/turtle/TurtleAnimation2Wet.png", w, h, true, true);
+    turtle3 = new Image("/frogger/image/turtle/TurtleAnimation3Wet.png", w, h, true, true);
+    turtle4 = new Image("/frogger/image/turtle/TurtleAnimation4Wet.png", w, h, true, true);
     setX(xpos);
     setY(ypos);
     speed = s;
