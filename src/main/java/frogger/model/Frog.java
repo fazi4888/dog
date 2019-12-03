@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import frogger.constant.Direction;
 import frogger.constant.FileName;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 
-public class Frog extends Movable {
+public class Frog extends Actor {
   //  /*
   Image imgW;
   Image imgA;
@@ -34,14 +33,11 @@ public class Frog extends Movable {
   ArrayList<End> inter = new ArrayList<End>();
 
   public Frog(String imageLink) {
-    setImage(new Image(imageLink, size, size, true, true));
-    setX(220);
-    //    setY(630);
-    setY(965);
-    initImage();
+    super(imageLink, 220, 965, 50, 50);
+    initFrogStateImage();
   }
 
-  private void initImage() {
+  private void initFrogStateImage() {
     imgW = new Image(FileName.IMAGE_FROG_PREFIX + "Up.png", size, size, true, true);
     imgA = new Image(FileName.IMAGE_FROG_PREFIX + "Left.png", size, size, true, true);
     imgS = new Image(FileName.IMAGE_FROG_PREFIX + "Down.png", size, size, true, true);
