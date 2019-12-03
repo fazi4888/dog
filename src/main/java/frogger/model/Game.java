@@ -3,10 +3,8 @@ package frogger.model;
 import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.constant.GameStatus;
-import javafx.scene.layout.Pane;
 
-public enum Game {
-  INSTANCE;
+public class Game {
 
   private World world;
 
@@ -20,12 +18,11 @@ public enum Game {
 
   private Player playerB;
 
-  public void init(GameMode gameMode, GameLevel gameLevel, Pane root) {
+  public void init(GameMode gameMode, GameLevel gameLevel, World world) {
     this.gameMode = gameMode;
     this.gameLevel = gameLevel;
     this.gameStatus = GameStatus.START;
-    this.world = new World(gameMode);
-    world.init(root);
+    this.world = world;
   }
 
   public GameStatus getGameStatus() {
