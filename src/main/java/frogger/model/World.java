@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import java.util.Set;
 
 public class World {
+  private Pane root;
 
   private Set<Log> logs;
   private Set<Turtle> turtles;
@@ -18,8 +19,10 @@ public class World {
   private Frog frogA;
   private Frog frogB;
 
-  public World(GameMode gameMode) {
+  public World(GameMode gameMode, Pane root) {
     frogA = new Frog("/frogger/image/frog/froggerUp.png");
+    this.root = root;
+    init(root);
   }
 
   public Frog getFrogA() {
@@ -46,27 +49,32 @@ public class World {
     root.getChildren().add(new Log("/frogger/image/log/log3.png", 170, 270, 425, 0.75));
     root.getChildren().add(new Log("/frogger/image/log/log3.png", 170, 490, 425, 0.75));
 
-    root.getChildren().add(new Turtle(500, 485, -1, 140));
-    root.getChildren().add(new Turtle(300, 485, -1, 140));
-    root.getChildren().add(new WetTurtle(700, 485, -1, 140, 140));
-    root.getChildren().add(new WetTurtle(600, 282, -1, 140, 140));
-    root.getChildren().add(new WetTurtle(400, 282, -1, 140, 140));
-    root.getChildren().add(new WetTurtle(200, 282, -1, 140, 140));
+    root.getChildren()
+        .add(new Turtle("/frogger/image/turtle/TurtleAnimation2.png", 500, 485, 140, -1));
+    root.getChildren()
+        .add(new Turtle("/frogger/image/turtle/TurtleAnimation2.png", 300, 485, 140, -1));
+    root.getChildren()
+        .add(new WetTurtle("/frogger/image/turtle/TurtleAnimation2Wet.png", 700, 485, 140, -1));
+    root.getChildren()
+        .add(new WetTurtle("/frogger/image/turtle/TurtleAnimation2Wet.png", 600, 282, 140, -1));
+    root.getChildren()
+        .add(new WetTurtle("/frogger/image/turtle/TurtleAnimation2Wet.png", 400, 282, 140, -1));
+    root.getChildren()
+        .add(new WetTurtle("/frogger/image/turtle/TurtleAnimation2Wet.png", 200, 282, 140, -1));
 
-    root.getChildren().add(new Car("/frogger/image/car/truck1" + "Right.png", 0, 649, 1, 120, 120));
+    root.getChildren().add(new Car("/frogger/image/car/truck1" + "Right.png", 0, 649, 120, 120, 1));
     root.getChildren()
-        .add(new Car("/frogger/image/car/truck1" + "Right.png", 300, 649, 1, 120, 120));
+        .add(new Car("/frogger/image/car/truck1" + "Right.png", 300, 649, 120, 120, 1));
     root.getChildren()
-        .add(new Car("/frogger/image/car/truck1" + "Right.png", 600, 649, 1, 120, 120));
-    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 100, 597, -1, 50, 50));
-    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 250, 597, -1, 50, 50));
-    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 400, 597, -1, 50, 50));
-    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 550, 597, -1, 50, 50));
-    root.getChildren().add(new Car("/frogger/image/car/truck2Right.png", 0, 540, 1, 200, 200));
-    root.getChildren().add(new Car("/frogger/image/car/truck2Right.png", 500, 540, 1, 200, 200));
-    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 500, 490, -5, 50, 50));
+        .add(new Car("/frogger/image/car/truck1" + "Right.png", 600, 649, 120, 120, 1));
+    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 100, 597, 50, 50, -1));
+    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 250, 597, 50, 50, -1));
+    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 400, 597, 50, 50, -1));
+    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 550, 597, 50, 50, -1));
+    root.getChildren().add(new Car("/frogger/image/car/truck2Right.png", 0, 540, 200, 200, 1));
+    root.getChildren().add(new Car("/frogger/image/car/truck2Right.png", 500, 540, 200, 200, 1));
+    root.getChildren().add(new Car("/frogger/image/car/car1Left.png", 500, 490, 50, 50, -5));
 
     root.getChildren().add(frogA);
-    //    root.getChildren().add(new Digit(0, 30, 360, 25));
   }
 }
