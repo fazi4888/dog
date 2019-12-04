@@ -1,5 +1,6 @@
 package frogger.model;
 
+import frogger.constant.FileName;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public class WetTurtle extends AutomaticActor implements Transformable {
     turtleStates =
         new ArrayList<>() {
           {
-            add(new Image("/frogger/image/turtle/TurtleAnimation2Wet.png", width, width, true, true));
-            add(new Image("/frogger/image/turtle/TurtleAnimation1.png", width, width, true, true));
-            add(new Image("/frogger/image/turtle/TurtleAnimation3Wet.png", width, width, true, true));
-            add(new Image("/frogger/image/turtle/TurtleAnimation4Wet.png", width, width, true, true));
+            add(new Image(FileName.IMAGE_WETTURTLE_1, width, width, true, true));
+            add(new Image(FileName.IMAGE_WETTURTLE_2, width, width, true, true));
+            add(new Image(FileName.IMAGE_WETTURTLE_3, width, width, true, true));
+            add(new Image(FileName.IMAGE_WETTURTLE_4, width, width, true, true));
           }
         };
   }
