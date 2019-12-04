@@ -5,7 +5,6 @@ import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.controller.GameController;
 import frogger.model.Game;
-import frogger.model.World;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -43,14 +42,13 @@ public enum SceneSwitch {
       Scene scene = new Scene(root);
       Main.getPrimaryStage().setScene(scene);
 
-      Game game = new Game();
-      World world = new World(gameMode, root);
-      game.init(gameMode, gameLevel, world);
+      Game game = new Game(gameMode, gameLevel, root);
       GameController gameController = loader.getController();
-      gameController.init(game);
+      gameController.initController(game);
 
       scene.addEventHandler(KeyEvent.KEY_PRESSED, gameController::keyPressed);
       scene.addEventHandler(KeyEvent.KEY_RELEASED, gameController::keyReleased);
+
       Main.getPrimaryStage().show();
     } catch (IOException e) {
       e.printStackTrace();

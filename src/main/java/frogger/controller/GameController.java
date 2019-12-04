@@ -17,7 +17,7 @@ public class GameController {
   private Frog frogA;
   private Frog frogB;
 
-  public void init(Game game) {
+  public void initController(Game game) {
     this.game = game;
     this.world = game.getWorld();
     this.frogA = world.getFrogA();

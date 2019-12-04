@@ -32,8 +32,8 @@ public class Frog extends Actor {
   double w = 800;
   ArrayList<End> inter = new ArrayList<End>();
 
-  public Frog(String imageLink) {
-    super(imageLink, 220, 965, 50, 50);
+  public Frog(String imageLink, int xpos) {
+    super(imageLink, xpos, 965, 50, 50);
     initFrogStateImage();
   }
 
