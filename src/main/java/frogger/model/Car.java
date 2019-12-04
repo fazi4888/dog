@@ -3,8 +3,8 @@ package frogger.model;
 public class Car extends AutomaticActor {
   private int speed;
 
-  public Car(String imageLink, int xpos, int ypos, int width, int height, double speed) {
-    super(imageLink, xpos, ypos, width, height, speed);
+  public Car(String imageLink, int xpos, int ypos, int width, double speed) {
+    super(imageLink, xpos, ypos, width, width, speed);
   }
 
   @Override
