@@ -53,28 +53,28 @@ public class WorldLoader {
 
     if (gameLevel == GameLevel.EASY) {
       logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 0, 222, 0.75));
-      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 220, 222, 0.75));
-      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 440, 222, 0.75));
+      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 315, 222, 0.75));
+      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 630, 222, 0.75));
       logs.add(new Log(FileName.IMAGE_LOG_LONG, 340, 0, 358, -2));
-      logs.add(new Log(FileName.IMAGE_LOG_LONG, 340, 400, 358, -2));
+      logs.add(new Log(FileName.IMAGE_LOG_LONG, 340, 540, 358, -2));
       logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 50, 425, 0.75));
-      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 270, 425, 0.75));
-      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 490, 425, 0.75));
+      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 330, 425, 0.75));
+      logs.add(new Log(FileName.IMAGE_LOG_SHORT, 170, 610, 425, 0.75));
 
-      turtles.add(new Turtle(FileName.IMAGE_TURTLE_2, 500, 485, 140, -1));
-      turtles.add(new Turtle(FileName.IMAGE_TURTLE_2, 300, 485, 140, -1));
-      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 700, 485, 140, -1));
-      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 600, 282, 140, -1));
-      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 400, 282, 140, -1));
-      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 200, 282, 140, -1));
+      turtles.add(new Turtle(FileName.IMAGE_TURTLE_2, 240, 485, 140, -1));
+      turtles.add(new Turtle(FileName.IMAGE_TURTLE_2, 440, 485, 140, -1));
+      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 640, 485, 140, -1));
+      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 100, 282, 140, -1));
+      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 350, 282, 140, -1));
+      wetTurtles.add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 700, 282, 140, -1));
 
       cars.add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 0, 890, 140, 1));
       cars.add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 300, 890, 140, 1));
       cars.add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 600, 890, 140, 1));
       cars.add(new Car(FileName.IMAGE_CAR_LEFT, 100, 810, 60, -1));
-      cars.add(new Car(FileName.IMAGE_CAR_LEFT, 250, 810, 60, -1));
-      cars.add(new Car(FileName.IMAGE_CAR_LEFT, 400, 810, 60, -1));
-      cars.add(new Car(FileName.IMAGE_CAR_LEFT, 550, 810, 60, -1));
+      cars.add(new Car(FileName.IMAGE_CAR_LEFT, 300, 810, 60, -1));
+      cars.add(new Car(FileName.IMAGE_CAR_LEFT, 500, 810, 60, -1));
+      cars.add(new Car(FileName.IMAGE_CAR_LEFT, 700, 810, 60, -1));
       cars.add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 0, 730, 230, 1));
       cars.add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 500, 730, 230, 1));
       cars.add(new Car(FileName.IMAGE_CAR_LEFT, 500, 660, 60, -5));
