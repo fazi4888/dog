@@ -19,8 +19,7 @@ public enum MusicPlayer {
   }
 
   public void playMusic() {
-    ClassLoader classLoader = getClass().getClassLoader();
-    URL resource = classLoader.getResource("frogger/music/Frogger Main Song Theme (loop).mp3");
+    URL resource = getClass().getClassLoader().getResource("frogger/music/Frogger Main Song Theme (loop).mp3");
     String path = null;
     try {
       path = Objects.requireNonNull(resource).toURI().getPath();

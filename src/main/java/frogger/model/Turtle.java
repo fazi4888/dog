@@ -1,36 +1,39 @@
 package frogger.model;
 
+import frogger.constant.FileName;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
-public class Turtle extends Movable {
+public class Turtle extends AutomaticActor implements Transformable {
 
-  ArrayList<Image> turtleStates;
+  private ArrayList<Image> turtleStates;
 
-  private int speed;
+  public Turtle(String imageLink, int xpos, int ypos, int width, double speed) {
+    super(imageLink, xpos, ypos, width, width, speed);
+    initTurtleState(width);
+  }
 
   @Override
   public void act(long now) {
-    setImage(turtleStates.get((int) ((now / 900000000) % 3)));
-
-    move(speed, 0);
-    if (getX() > 600 && speed > 0) setX(-200);
-    if (getX() < -75 && speed < 0) setX(600);
+    super.act(now);
+    transform(now);
   }
 
-  public Turtle(int xpos, int ypos, int speed, int width) {
+  @Override
+  public void transform(long now) {
+    int stateIndex = (int) (now / 900000000 % 3);
+    setImage(turtleStates.get(stateIndex));
+  }
+
+  private void initTurtleState(int width) {
     turtleStates =
         new ArrayList<>() {
           {
-            add(new Image("/frogger/image/turtle/TurtleAnimation1.png", width, width, true, true));
-            add(new Image("/frogger/image/turtle/TurtleAnimation2.png", width, width, true, true));
-            add(new Image("/frogger/image/turtle/TurtleAnimation3.png", width, width, true, true));
+            add(new Image(FileName.IMAGE_TURTLE_1, width, width, true, true));
+            add(new Image(FileName.IMAGE_TURTLE_2, width, width, true, true));
+            add(new Image(FileName.IMAGE_TURTLE_3, width, width, true, true));
           }
         };
-    setX(xpos);
-    setY(ypos);
-    this.speed = speed;
-    setImage(turtleStates.get(1));
   }
 }

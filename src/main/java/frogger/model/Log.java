@@ -1,8 +1,6 @@
 package frogger.model;
 
-import javafx.scene.image.Image;
-
-public class Log extends Movable {
+public class Log extends AutomaticActor {
 
   private double speed;
 
@@ -16,10 +14,7 @@ public class Log extends Movable {
   }
 
   public Log(String imageLink, int size, int xpos, int ypos, double speed) {
-    setImage(new Image(imageLink, size, size, true, true));
-    setX(xpos);
-    setY(ypos);
-    this.speed = speed;
+    super(imageLink, xpos, ypos, size, 40, speed);
   }
 
   public boolean getLeft() {
