@@ -11,6 +11,7 @@ public class Turtle extends AutomaticActor implements Transformable {
 
   public Turtle(String imageLink, int xpos, int ypos, int width, double speed) {
     super(imageLink, xpos, ypos, width, width, speed);
+    setEdge(-75, -200);
     initTurtleState(width);
   }
 

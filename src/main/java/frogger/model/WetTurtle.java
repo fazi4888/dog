@@ -12,6 +12,7 @@ public class WetTurtle extends AutomaticActor implements Transformable {
 
   public WetTurtle(String imageLink, int xpos, int ypos, int width, double speed) {
     super(imageLink, xpos, ypos, width, width, speed);
+    setEdge(-75, -200);
     initTurtleState(width);
   }
 
