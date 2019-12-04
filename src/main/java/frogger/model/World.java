@@ -3,10 +3,10 @@ package frogger.model;
 import frogger.util.WorldLoader;
 import javafx.scene.layout.Pane;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class World {
-  private Pane root;
 
   private Frog frogA;
   private Frog frogB;
@@ -18,6 +18,8 @@ public class World {
 
   private Set<End> ends;
 
+  private Set<AutomaticActor> automaticActors;
+
   public World(WorldLoader worldLoader) {
     frogA = worldLoader.getFrogA();
     frogB = worldLoader.getFrogB();
@@ -28,6 +30,16 @@ public class World {
     cars = worldLoader.getCars();
 
     ends = worldLoader.getEnds();
+
+    initAutomaticActor();
+  }
+
+  private void initAutomaticActor() {
+    automaticActors = new HashSet<>();
+    automaticActors.addAll(logs);
+    automaticActors.addAll(turtles);
+    automaticActors.addAll(wetTurtles);
+    automaticActors.addAll(cars);
   }
 
   public Frog getFrogA() {
@@ -36,5 +48,11 @@ public class World {
 
   public Frog getFrogB() {
     return frogB;
+  }
+
+  public void run() {
+    for (AutomaticActor automaticActor : automaticActors) {
+      automaticActor.run();
+    }
   }
 }
