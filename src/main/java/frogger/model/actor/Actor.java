@@ -1,13 +1,20 @@
-package frogger.model;
+package frogger.model.actor;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public abstract class Actor extends ImageView {
+  private int xpos;
+  private int ypos;
 
   public Actor(String imageLink, int xpos, int ypos, int width, int height) {
     setImage(new Image(imageLink, width, height, true, true));
+    this.xpos = xpos;
+    this.ypos = ypos;
+  }
+
+  public void reset() {
     setX(xpos);
     setY(ypos);
   }
