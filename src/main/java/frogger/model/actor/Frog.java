@@ -66,11 +66,25 @@ public class Frog extends Actor {
     isJumping = (isMoving) ? !isJumping : false;
   }
 
-  public void touchWater() {}
+  public void touchEnd() {
+    resetActor();
+    System.out.println("You touch End!!!!");
+  }
 
-  public void touchCar() {}
+  public void touchWater() {
+    System.out.println("You touch Water!!!!");
+  }
 
-  public void touchLogOrTurtle() {}
+  public void touchCar() {
+    System.out.println("You touch Car!!!!");
+  }
 
-  public void touchSunkTurtle() {}
+  public void touchLogOrTurtle(double speed) {
+    move(speed, 0);
+    System.out.println("You touch Log / Turtle!!!!");
+  }
+
+  public void touchSunkTurtle() {
+    System.out.println("You touch SunkTurtle!!!!");
+  }
 }

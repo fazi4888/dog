@@ -3,6 +3,7 @@ package frogger.model;
 import frogger.model.actor.AutomaticActor;
 import frogger.model.actor.End;
 import frogger.model.actor.Frog;
+import frogger.util.TouchChecker;
 import frogger.util.WorldLoader;
 
 import java.util.ArrayList;
@@ -29,8 +30,15 @@ public class World {
     return frogB;
   }
 
+  public void resetAllEnds() {
+    ends.forEach(End::resetActor);
+  }
+
   public void run(long now) {
-    for (AutomaticActor automaticActor : automaticActors) automaticActor.act(now);
-    for (End end : ends) end.act(now);
+    ArrayList<AutomaticActor> allActors = automaticActors;
+    automaticActors.addAll(ends);
+    for (AutomaticActor autoActor : allActors) autoActor.act(now);
+    TouchChecker.INSTANCE.checkTouchActor(frogA, allActors);
+    if (frogB != null) TouchChecker.INSTANCE.checkTouchActor(frogB, allActors);
   }
 }
