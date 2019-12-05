@@ -11,6 +11,10 @@ public abstract class AutomaticActor extends Actor {
     this.speed = speed;
   }
 
+  public double getSpeed() {
+    return speed;
+  }
+
   public void setEdge(int left, int right) {
     this.edgeLeft = left;
     this.edgeRight = right;
