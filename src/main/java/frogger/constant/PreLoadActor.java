@@ -40,16 +40,16 @@ public enum PreLoadActor {
           add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 350, 282, 140, -1));
           add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 700, 282, 140, -1));
 
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 0, 890, 140, 1));
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 300, 890, 140, 1));
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 600, 890, 140, 1));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 100, 810, 60, -1));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 810, 60, -1));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 810, 60, -1));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 810, 60, -1));
-          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 0, 730, 230, 1));
-          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 500, 730, 230, 1));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 660, 60, -5));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 0, 870, 140, 1));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 300, 870, 140, 1));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 600, 870, 140, 1));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 100, 790, 60, -1));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 790, 60, -1));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 790, 60, -1));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 790, 60, -1));
+          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 0, 710, 230, 1));
+          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 500, 710, 230, 1));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 640, 60, -5));
         }
       };
 
@@ -72,17 +72,17 @@ public enum PreLoadActor {
           add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 350, 282, 140, -1));
           add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 700, 282, 140, -1));
 
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 0, 890, 140, 1.2));
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 300, 890, 140, 1.2));
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 600, 890, 140, 1.2));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 100, 810, 60, -1.3));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 810, 60, -1.3));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 810, 60, -1.3));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 810, 60, -1.3));
-          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 0, 730, 230, 1.2));
-          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 500, 730, 230, 1.2));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 660, 60, -5));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 660, 60, -5));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 0, 870, 140, 1.2));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 300, 870, 140, 1.2));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 600, 870, 140, 1.2));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 100, 790, 60, -1.3));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 790, 60, -1.3));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 790, 60, -1.3));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 790, 60, -1.3));
+          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 0, 710, 230, 1.2));
+          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 500, 710, 230, 1.2));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 640, 60, -5));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 640, 60, -5));
         }
       };
 
@@ -105,17 +105,17 @@ public enum PreLoadActor {
           add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 350, 282, 140, -1));
           add(new WetTurtle(FileName.IMAGE_WETTURTLE_1, 700, 282, 140, -1));
 
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 0, 890, 140, 2));
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 300, 890, 140, 2));
-          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 600, 890, 140, 2));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 100, 810, 60, -2.2));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 810, 60, -2.2));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 810, 60, -2.2));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 810, 60, -2.2));
-          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 0, 730, 230, 2));
-          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 500, 730, 230, 2));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 660, 60, -5));
-          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 660, 60, -5));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 0, 870, 140, 2));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 300, 870, 140, 2));
+          add(new Car(FileName.IMAGE_TRUCK_SHORT_RIGHT, 600, 870, 140, 2));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 100, 790, 60, -2.2));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 790, 60, -2.2));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 500, 790, 60, -2.2));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 790, 60, -2.2));
+          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 0, 710, 230, 2));
+          add(new Car(FileName.IMAGE_TRUCK_LONG_RIGHT, 500, 710, 230, 2));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 700, 640, 60, -5));
+          add(new Car(FileName.IMAGE_CAR_LEFT, 300, 640, 60, -5));
         }
       };
 }
