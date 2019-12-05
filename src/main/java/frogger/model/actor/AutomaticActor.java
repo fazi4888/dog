@@ -16,7 +16,6 @@ public abstract class AutomaticActor extends Actor {
     this.edgeRight = right;
   }
 
-  @Override
   public void act(long now) {
     move(speed, 0);
     resetPos();

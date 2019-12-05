@@ -3,7 +3,7 @@ package frogger.model.actor;
 import frogger.constant.FileName;
 import javafx.scene.image.Image;
 
-public class End extends Actor {
+public class End extends AutomaticActor {
 
   boolean activated = false;
 
@@ -11,7 +11,7 @@ public class End extends Actor {
   private Image endWithFrog;
 
   public End(int xpos, int ypos) {
-    super(FileName.IMAGE_END, xpos, ypos, 74, 74);
+    super(FileName.IMAGE_END, xpos, ypos, 74, 74, 0);
     endWithoutFrog = new Image(FileName.IMAGE_END, 74, 74, true, true);
     endWithFrog = new Image(FileName.IMAGE_END_FROG, 74, 74, true, true);
   }
@@ -26,11 +26,6 @@ public class End extends Actor {
   public void setEnd() {
     setImage(endWithFrog);
     activated = true;
-  }
-
-  @Override
-  public void act(long now) {
-    // TODO Auto-generated method st
   }
 
   public boolean isActivated() {

@@ -66,6 +66,11 @@ public class Frog extends Actor {
     isJumping = (isMoving) ? !isJumping : false;
   }
 
-  @Override
-  public void act(long now) {}
+  public void touchWater() {}
+
+  public void touchCar() {}
+
+  public void touchLogOrTurtle() {}
+
+  public void touchSunkTurtle() {}
 }
