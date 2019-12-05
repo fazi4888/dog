@@ -1,5 +1,6 @@
 package frogger.util;
 
+import frogger.constant.Death;
 import frogger.model.actor.*;
 import javafx.geometry.Bounds;
 
@@ -9,6 +10,7 @@ public enum TouchChecker {
   INSTANCE;
 
   public void checkTouchActor(Frog frog, ArrayList<AutomaticActor> automaticActors) {
+    if (frog.getDeath() != Death.NONE) return;
     boolean isTouchActor = false;
     Bounds frogBounds = frog.localToScene(frog.getBoundsInLocal());
     for (AutomaticActor automaticActor : automaticActors) {

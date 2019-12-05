@@ -28,7 +28,7 @@ public enum TouchHandler {
     if (!wetTurtle.isSunk()) {
       frog.touchLogOrTurtle(wetTurtle.getSpeed());
     } else {
-      frog.touchSunkTurtle();
+      frog.touchWater();
     }
   }
 

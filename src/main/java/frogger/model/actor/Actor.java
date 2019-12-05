@@ -30,4 +30,6 @@ public abstract class Actor extends ImageView {
   public double getHeight() {
     return this.getBoundsInLocal().getHeight();
   }
+
+  public abstract void act(long now);
 }
