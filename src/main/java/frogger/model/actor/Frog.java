@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.model.actor;
 
 import java.util.ArrayList;
 
@@ -35,6 +35,11 @@ public class Frog extends Actor {
   public Frog(String imageLink, int xpos) {
     super(imageLink, xpos, 965, 50, 50);
     initFrogStateImage();
+  }
+
+  @Override
+  public void reset() {
+    super.reset();
   }
 
   private void initFrogStateImage() {

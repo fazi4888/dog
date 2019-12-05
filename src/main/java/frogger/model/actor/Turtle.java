@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.model.actor;
 
 import frogger.constant.FileName;
 import javafx.scene.image.Image;
@@ -13,6 +13,12 @@ public class Turtle extends AutomaticActor implements Transformable {
     super(imageLink, xpos, ypos, width, width, speed);
     setEdge(-75, -200);
     initTurtleState(width);
+  }
+
+  @Override
+  public void reset() {
+    super.reset();
+    setImage(turtleStates.get(1));
   }
 
   @Override

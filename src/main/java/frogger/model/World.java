@@ -1,5 +1,8 @@
 package frogger.model;
 
+import frogger.model.actor.AutomaticActor;
+import frogger.model.actor.End;
+import frogger.model.actor.Frog;
 import frogger.util.WorldLoader;
 
 import java.util.ArrayList;

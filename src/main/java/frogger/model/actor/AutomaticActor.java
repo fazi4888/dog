@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.model.actor;
 
 public abstract class AutomaticActor extends Actor {
 

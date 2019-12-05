@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.model.actor;
 
 public class Log extends AutomaticActor {
   public Log(String imageLink, int size, int xpos, int ypos, double speed) {
