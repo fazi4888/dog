@@ -3,6 +3,9 @@ package frogger.constant;
 public class FileName {
   public static final String IMAGE_FROG_PREFIX = "/frogger/image/frog/frogger";
 
+  public static final String IMAGE_END = "/frogger/image/end/End.png";
+  public static final String IMAGE_END_FROG = "/frogger/image/end/FrogEnd.png";
+
   public static final String IMAGE_LOG_LONG = "/frogger/image/log/log1.png";
   public static final String IMAGE_LOG_MEDIUM = "/frogger/image/log/log2.png";
   public static final String IMAGE_LOG_SHORT = "/frogger/image/log/log3.png";
