@@ -25,6 +25,7 @@ public class Game {
     this.gameLevel = gameLevel;
     this.gameStatus = GameStatus.START;
     this.world = new World(new WorldLoader(gameMode, gameLevel, root));
+    this.run();
   }
 
   public GameStatus getGameStatus() {
@@ -41,5 +42,9 @@ public class Game {
 
   public World getWorld() {
     return world;
+  }
+
+  private void run() {
+    this.world.run();
   }
 }

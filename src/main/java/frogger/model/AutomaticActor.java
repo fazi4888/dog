@@ -1,25 +1,29 @@
 package frogger.model;
 
 public abstract class AutomaticActor extends Actor {
+
   private double speed;
+  private int edgeLeft;
+  private int edgeRight;
 
   public AutomaticActor(String imageLink, int xpos, int ypos, int width, int height, double speed) {
     super(imageLink, xpos, ypos, width, height);
-    setSpeed(speed);
-  }
-
-  public void setSpeed(double speed) {
     this.speed = speed;
   }
 
-  public double getSpeed() {
-    return speed;
+  public void setEdge(int left, int right) {
+    this.edgeLeft = left;
+    this.edgeRight = right;
   }
 
   @Override
   public void act(long now) {
     move(speed, 0);
-    if (getX() > 600 && speed > 0) setX(-200);
-    if (getX() < -75 && speed < 0) setX(600);
+    resetPos();
+  }
+
+  private void resetPos() {
+    if (getX() > 768 && speed > 0) setX(edgeRight);
+    if (getX() < edgeLeft && speed < 0) setX(768);
   }
 }

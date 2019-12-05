@@ -1,32 +1,20 @@
 package frogger.model;
 
 import frogger.util.WorldLoader;
-import javafx.scene.layout.Pane;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 public class World {
-  private Pane root;
 
   private Frog frogA;
   private Frog frogB;
-
-  private Set<Log> logs;
-  private Set<Turtle> turtles;
-  private Set<WetTurtle> wetTurtles;
-  private Set<Car> cars;
-
-  private Set<End> ends;
+  private ArrayList<AutomaticActor> automaticActors;
+  private ArrayList<End> ends;
 
   public World(WorldLoader worldLoader) {
     frogA = worldLoader.getFrogA();
     frogB = worldLoader.getFrogB();
-
-    logs = worldLoader.getLogs();
-    turtles = worldLoader.getTurtles();
-    wetTurtles = worldLoader.getWetTurtles();
-    cars = worldLoader.getCars();
-
+    automaticActors = worldLoader.getAutomaticActors();
     ends = worldLoader.getEnds();
   }
 
@@ -36,5 +24,11 @@ public class World {
 
   public Frog getFrogB() {
     return frogB;
+  }
+
+  public void run() {
+    for (AutomaticActor automaticActor : automaticActors) {
+      automaticActor.run();
+    }
   }
 }
