@@ -29,9 +29,8 @@ public class World {
     return frogB;
   }
 
-  public void run() {
-    for (AutomaticActor automaticActor : automaticActors) {
-      automaticActor.run();
-    }
+  public void run(long now) {
+    for (AutomaticActor automaticActor : automaticActors) automaticActor.act(now);
+    for (End end : ends) end.act(now);
   }
 }
