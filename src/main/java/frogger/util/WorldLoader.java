@@ -3,8 +3,9 @@ package frogger.util;
 import frogger.constant.PreLoadActor;
 import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
-import frogger.constant.FileName;
-import frogger.model.*;
+import frogger.model.actor.AutomaticActor;
+import frogger.model.actor.End;
+import frogger.model.actor.Frog;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class WorldLoader {
 
   private Frog frogA;
   private Frog frogB;
-  private ArrayList<AutomaticActor> automaticActors;
+  private ArrayList<AutomaticActor> movableActors;
   private ArrayList<End> ends;
 
   public WorldLoader(GameMode gameMode, GameLevel gameLevel, Pane root) {
@@ -25,35 +26,45 @@ public class WorldLoader {
     this.gameMode = gameMode;
     this.gameLevel = gameLevel;
 
-    this.automaticActors = new ArrayList<>();
+    this.movableActors = new ArrayList<>();
     this.ends = new ArrayList<>();
 
     readActor();
+    resetActor();
     drawActor();
   }
 
   private void readActor() {
-    frogA = new Frog(FileName.IMAGE_FROG_UP, 150);
-    frogB = (gameMode == GameMode.DOUBLE) ? new Frog(FileName.IMAGE_FROG_UP, 600) : null;
+    frogA = PreLoadActor.INSTANCE.frogA;
+    frogB = PreLoadActor.INSTANCE.frogB;
     ends = PreLoadActor.INSTANCE.ends;
     switch (gameLevel) {
       case EASY:
-        automaticActors = PreLoadActor.INSTANCE.easyAutoActors;
+        movableActors = PreLoadActor.INSTANCE.easyAutoActors;
         break;
       case MEDIUM:
-        automaticActors = PreLoadActor.INSTANCE.mediumAutoActors;
+        movableActors = PreLoadActor.INSTANCE.mediumAutoActors;
         break;
       case HARD:
-        automaticActors = PreLoadActor.INSTANCE.hardAutoActors;
+        movableActors = PreLoadActor.INSTANCE.hardAutoActors;
         break;
     }
   }
 
+  private void resetActor() {
+    frogA.resetActor();
+    frogA.setId("frogA");
+    frogB.resetActor();
+    frogB.setId("frogB");
+    ends.forEach(End::resetActor);
+    movableActors.forEach(AutomaticActor::resetActor);
+  }
+
   private void drawActor() {
-    root.getChildren().addAll(automaticActors);
+    root.getChildren().addAll(movableActors);
     root.getChildren().addAll(ends);
     root.getChildren().add(frogA);
-    if (frogB != null) root.getChildren().add(frogB);
+    if (isDoubleMode()) root.getChildren().add(frogB);
   }
 
   public Frog getFrogA() {
@@ -61,14 +72,18 @@ public class WorldLoader {
   }
 
   public Frog getFrogB() {
-    return frogB;
+    return isDoubleMode() ? frogB : null;
   }
 
-  public ArrayList<AutomaticActor> getAutomaticActors() {
-    return automaticActors;
+  public ArrayList<AutomaticActor> getMovableActors() {
+    return movableActors;
   }
 
   public ArrayList<End> getEnds() {
     return ends;
+  }
+
+  private boolean isDoubleMode() {
+    return gameMode == GameMode.DOUBLE;
   }
 }

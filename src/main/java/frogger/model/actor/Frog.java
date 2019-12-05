@@ -1,0 +1,143 @@
+package frogger.model.actor;
+
+import frogger.constant.Death;
+import frogger.constant.Direction;
+import frogger.constant.FileName;
+import javafx.scene.image.Image;
+
+import java.util.ArrayList;
+
+public class Frog extends Actor {
+
+  private Image imgW;
+  private Image imgA;
+  private Image imgS;
+  private Image imgD;
+  private Image imgWJump;
+  private Image imgAJump;
+  private Image imgSJump;
+  private Image imgDJump;
+
+  private ArrayList<Image> carDeath;
+  private ArrayList<Image> waterDeath;
+
+  private int size = 50;
+  private double movementY = 34;
+  private double movementX = 20;
+  private boolean isJumping;
+  private boolean noMove;
+  private Death death;
+  private int deathImgIndex = 0;
+
+  public Frog(String imageLink, int xpos) {
+    super(imageLink, xpos, 965, 50, 50);
+    initFrogStateImage();
+    initDeathImage();
+  }
+
+  @Override
+  public void resetActor() {
+    super.resetActor();
+    setDeath(Death.NONE);
+    setImage(imgW);
+    isJumping = false;
+    noMove = false;
+    deathImgIndex = 0;
+  }
+
+  public void setDeath(Death death) {
+    this.death = death;
+  }
+
+  public Death getDeath() {
+    return death;
+  }
+
+  public void jump(Direction direction, boolean isMoving) {
+    if (noMove && !isJumping) return;
+    switch (direction) {
+      case UP:
+        move(0, -movementY);
+        setImage((isJumping) ? imgW : imgWJump);
+        break;
+      case LEFT:
+        move(-movementX, 0);
+        setImage((isJumping) ? imgA : imgAJump);
+        break;
+      case DOWN:
+        move(0, movementY);
+        setImage((isJumping) ? imgS : imgSJump);
+        break;
+      case RIGHT:
+        move(movementX, 0);
+        setImage((isJumping) ? imgD : imgDJump);
+        break;
+    }
+    isJumping = (isMoving) ? !isJumping : false;
+  }
+
+  @Override
+  public void act(long now) {
+    if (getDeath() != Death.NONE) showDeathFrames(now, getDeath());
+  }
+
+  public void touchEnd() {
+    noMove = true;
+    resetActor();
+  }
+
+  public void touchWater() {
+    setDeath(Death.WATER);
+  }
+
+  public void touchCar() {
+    setDeath(Death.CAR);
+  }
+
+  public void touchLogOrTurtle(double speed) {
+    if (death != Death.NONE) return;
+    move(speed, 0);
+  }
+
+  private void showDeathFrames(long now, Death death) {
+    noMove = true;
+    ArrayList<Image> currentDeathImg = (death == Death.CAR) ? carDeath : waterDeath;
+    if (deathImgIndex >= 0 && deathImgIndex < currentDeathImg.size()) {
+      setImage(currentDeathImg.get(deathImgIndex));
+      if (now % 11 == 0) deathImgIndex++;
+    } else {
+      resetActor();
+    }
+  }
+
+  private void initFrogStateImage() {
+    imgW = new Image(FileName.IMAGE_FROG_PREFIX + "Up.png", size, size, true, true);
+    imgA = new Image(FileName.IMAGE_FROG_PREFIX + "Left.png", size, size, true, true);
+    imgS = new Image(FileName.IMAGE_FROG_PREFIX + "Down.png", size, size, true, true);
+    imgD = new Image(FileName.IMAGE_FROG_PREFIX + "Right.png", size, size, true, true);
+    imgWJump = new Image(FileName.IMAGE_FROG_PREFIX + "UpJump.png", size, size, true, true);
+    imgAJump = new Image(FileName.IMAGE_FROG_PREFIX + "LeftJump.png", size, size, true, true);
+    imgSJump = new Image(FileName.IMAGE_FROG_PREFIX + "DownJump.png", size, size, true, true);
+    imgDJump = new Image(FileName.IMAGE_FROG_PREFIX + "RightJump.png", size, size, true, true);
+  }
+
+  private void initDeathImage() {
+    carDeath =
+        new ArrayList<>() {
+          {
+            add(new Image(FileName.IMAGE_DEATH_CAR_1, size, size, true, true));
+            add(new Image(FileName.IMAGE_DEATH_CAR_2, size, size, true, true));
+            add(new Image(FileName.IMAGE_DEATH_CAR_3, size, size, true, true));
+          }
+        };
+    waterDeath =
+        new ArrayList<>() {
+          {
+            add(new Image(FileName.IMAGE_DEATH_WATER_1, size, size, true, true));
+            add(new Image(FileName.IMAGE_DEATH_WATER_2, size, size, true, true));
+            add(new Image(FileName.IMAGE_DEATH_WATER_3, size, size, true, true));
+            add(new Image(FileName.IMAGE_DEATH_WATER_4, size, size, true, true));
+          }
+        };
+  }
+}

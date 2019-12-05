@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.model.actor;
 
 import frogger.constant.FileName;
 import javafx.scene.image.Image;
@@ -14,6 +14,12 @@ public class WetTurtle extends AutomaticActor implements Transformable {
     super(imageLink, xpos, ypos, width, width, speed);
     setEdge(-75, -200);
     initTurtleState(width);
+  }
+
+  @Override
+  public void resetActor() {
+    super.resetActor();
+    setImage(turtleStates.get(0));
   }
 
   public boolean isSunk() {

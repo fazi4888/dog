@@ -2,7 +2,7 @@ package frogger.controller;
 
 import frogger.constant.Direction;
 import frogger.constant.Operation;
-import frogger.model.Frog;
+import frogger.model.actor.Frog;
 import frogger.model.Game;
 import frogger.model.World;
 import javafx.scene.input.KeyCode;

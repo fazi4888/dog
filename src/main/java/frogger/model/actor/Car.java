@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.model.actor;
 
 public class Car extends AutomaticActor {
   public Car(String imageLink, int xpos, int ypos, int width, double speed) {

@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.model.actor;
 
 public abstract class AutomaticActor extends Actor {
 
@@ -9,6 +9,10 @@ public abstract class AutomaticActor extends Actor {
   public AutomaticActor(String imageLink, int xpos, int ypos, int width, int height, double speed) {
     super(imageLink, xpos, ypos, width, height);
     this.speed = speed;
+  }
+
+  public double getSpeed() {
+    return speed;
   }
 
   public void setEdge(int left, int right) {
