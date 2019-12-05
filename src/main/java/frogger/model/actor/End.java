@@ -17,8 +17,8 @@ public class End extends Actor {
   }
 
   @Override
-  public void reset() {
-    super.reset();
+  public void resetActor() {
+    super.resetActor();
     setImage(endWithoutFrog);
     activated = false;
   }

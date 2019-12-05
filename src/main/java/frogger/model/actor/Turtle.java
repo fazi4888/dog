@@ -16,8 +16,8 @@ public class Turtle extends AutomaticActor implements Transformable {
   }
 
   @Override
-  public void reset() {
-    super.reset();
+  public void resetActor() {
+    super.resetActor();
     setImage(turtleStates.get(1));
   }
 

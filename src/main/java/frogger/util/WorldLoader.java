@@ -52,10 +52,10 @@ public class WorldLoader {
   }
 
   private void resetActor() {
-    frogA.reset();
-    frogB.reset();
-    ends.forEach(End::reset);
-    automaticActors.forEach(AutomaticActor::reset);
+    frogA.resetActor();
+    frogB.resetActor();
+    ends.forEach(End::resetActor);
+    automaticActors.forEach(AutomaticActor::resetActor);
   }
 
   private void drawActor() {

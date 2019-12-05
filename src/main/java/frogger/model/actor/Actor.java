@@ -14,7 +14,7 @@ public abstract class Actor extends ImageView {
     this.ypos = ypos;
   }
 
-  public void reset() {
+  public void resetActor() {
     setX(xpos);
     setY(ypos);
   }
