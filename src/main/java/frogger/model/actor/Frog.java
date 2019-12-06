@@ -24,7 +24,9 @@ public class Frog extends Actor {
   private int size = 50;
   private double movementY = 34;
   private double movementX = 20;
+
   private boolean isJumping;
+  private boolean hasJump;
   private boolean noMove;
   private Death death;
   private int deathImgIndex = 0;
@@ -43,6 +45,7 @@ public class Frog extends Actor {
     isJumping = false;
     noMove = false;
     deathImgIndex = 0;
+    hasJump = false;
   }
 
   public void setDeath(Death death) {
@@ -54,6 +57,7 @@ public class Frog extends Actor {
   }
 
   public void jump(Direction direction, boolean isMoving) {
+    if (!hasJump && !isMoving) return;
     if (noMove && !isJumping) return;
     switch (direction) {
       case UP:
@@ -74,6 +78,7 @@ public class Frog extends Actor {
         break;
     }
     isJumping = (isMoving) ? !isJumping : false;
+    if (isMoving) hasJump = true;
   }
 
   @Override
