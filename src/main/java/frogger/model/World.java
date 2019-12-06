@@ -35,10 +35,6 @@ public class World {
     return frogB;
   }
 
-  public void resetAllEnds() {
-    ends.forEach(End::resetActor);
-  }
-
   public void run(long now) {
     for (Actor actor : allActors) actor.act(now);
     TouchChecker.INSTANCE.checkTouchActor(frogA, allAutoActors);

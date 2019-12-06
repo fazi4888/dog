@@ -19,6 +19,7 @@ public enum TouchChecker {
         isTouchActor = true;
         if (automaticActor instanceof End) {
           TouchHandler.INSTANCE.touchEnd(frog, (End) automaticActor);
+          checkTouchAllEnds(frog, automaticActors);
         } else if (automaticActor instanceof Log) {
           TouchHandler.INSTANCE.touchLog(frog, (Log) automaticActor);
         } else if (automaticActor instanceof Turtle) {
@@ -33,6 +34,16 @@ public enum TouchChecker {
     if (!isTouchActor && checkTouchWater(frog)) {
       TouchHandler.INSTANCE.touchWater(frog);
     }
+  }
+
+  private void checkTouchAllEnds(Frog frog, ArrayList<AutomaticActor> automaticActors) {
+    int beActivated = 0;
+    for (AutomaticActor automaticActor : automaticActors) {
+      if (automaticActor instanceof End && ((End) automaticActor).isActivated()) {
+        beActivated++;
+      }
+    }
+    if (beActivated == 5) TouchHandler.INSTANCE.touchAllEnd(frog);
   }
 
   private boolean checkTouchWater(Frog frog) {

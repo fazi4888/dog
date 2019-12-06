@@ -2,14 +2,24 @@ package frogger.util;
 
 import frogger.model.actor.*;
 
+import java.util.ArrayList;
+
 public enum TouchHandler {
   INSTANCE;
+
+  private ArrayList<End> activatedEnds = new ArrayList<>();
 
   public void touchEnd(Frog frog, End end) {
     if (!end.isActivated()) {
       frog.touchEnd();
       end.setEnd();
+      activatedEnds.add(end);
     }
+  }
+
+  public void touchAllEnd(Frog frog) {
+    activatedEnds.forEach(End::resetActor);
+    activatedEnds.clear();
   }
 
   public void touchLog(Frog frog, Log log) {
