@@ -17,9 +17,6 @@ public class Game {
   private GameMode gameMode;
   private GameLevel gameLevel;
 
-  private Player playerA;
-  private Player playerB;
-
   public Game(GameController gameController, GameMode gameMode, GameLevel gameLevel, Pane root) {
     this.gameController = gameController;
     this.gameMode = gameMode;
@@ -27,7 +24,7 @@ public class Game {
     this.gameStatus = GameStatus.START;
     this.world = new World(new WorldLoader(gameMode, gameLevel, root));
     this.gameController.initController(this);
-    this.start();
+    startGame();
   }
 
   public GameStatus getGameStatus() {
@@ -44,6 +41,15 @@ public class Game {
 
   public World getWorld() {
     return world;
+  }
+
+  public void startGame() {
+    start();
+  }
+
+  public void endGame() {
+    stop();
+    gameStatus = GameStatus.END;
   }
 
   private AnimationTimer timer =
