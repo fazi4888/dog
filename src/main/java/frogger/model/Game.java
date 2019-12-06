@@ -24,7 +24,6 @@ public class Game {
     this.gameStatus = GameStatus.START;
     this.world = new World(new WorldLoader(gameMode, gameLevel, root));
     this.gameController.initController(this);
-    startGame();
   }
 
   public GameStatus getGameStatus() {

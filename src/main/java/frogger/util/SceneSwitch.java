@@ -45,7 +45,7 @@ public enum SceneSwitch {
 
       GameController gameController = loader.getController();
       Game game = new Game(gameController, gameMode, gameLevel, root);
-//      gameController.initController(game);
+      game.startGame();
 
       scene.addEventHandler(KeyEvent.KEY_PRESSED, gameController::keyPressed);
       scene.addEventHandler(KeyEvent.KEY_RELEASED, gameController::keyReleased);

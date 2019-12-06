@@ -9,17 +9,23 @@ public enum TouchHandler {
 
   private ArrayList<End> activatedEnds = new ArrayList<>();
 
+  public void init() {
+    activatedEnds.clear();
+  }
+
   public void touchEnd(Frog frog, End end) {
     if (!end.isActivated()) {
       frog.touchEnd();
       end.setEnd();
       activatedEnds.add(end);
+      if (activatedEnds.size() == 5) {
+        touchAllEnd(frog);
+      }
     }
   }
 
-  public void touchAllEnd(Frog frog) {
+  private void touchAllEnd(Frog frog) {
     activatedEnds.forEach(End::resetActor);
-    activatedEnds.clear();
   }
 
   public void touchLog(Frog frog, Log log) {
@@ -38,7 +44,7 @@ public enum TouchHandler {
     if (!wetTurtle.isSunk()) {
       frog.touchLogOrTurtle(wetTurtle.getSpeed());
     } else {
-      frog.touchWater();
+      touchWater(frog);
     }
   }
 
