@@ -4,6 +4,7 @@ public class FileName {
   public static final String VIEW_HOME = "/frogger/view/home.fxml";
   public static final String VIEW_SELECTION = "/frogger/view/selection.fxml";
   public static final String VIEW_GAME = "/frogger/view/game.fxml";
+  public static final String VIEW_HELP = "/frogger/view/help.fxml";
 
   public static final String IMAGE_FROG_PREFIX = "/frogger/image/frog/frogger";
   public static final String IMAGE_FROG_UP = "/frogger/image/frog/froggerUp.png";

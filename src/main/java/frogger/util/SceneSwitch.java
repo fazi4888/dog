@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -55,4 +56,22 @@ public enum SceneSwitch {
     scene.addEventHandler(KeyEvent.KEY_PRESSED, game.getWorld()::keyPressed);
     scene.addEventHandler(KeyEvent.KEY_RELEASED, game.getWorld()::keyReleased);
   }
+
+  public void showHelp() {
+    try {
+      FXMLLoader loader = new FXMLLoader((getClass().getResource(FileName.VIEW_HELP)));
+      Pane root = loader.load();
+      Stage helpStage = new Stage();
+      helpStage.setScene(new Scene(root));
+      helpStage.setTitle("HELP");
+      helpStage.setResizable(false);
+      helpStage.show();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void showScoreboard() {}
+
+  public void showDoubleModeResult() {}
 }
