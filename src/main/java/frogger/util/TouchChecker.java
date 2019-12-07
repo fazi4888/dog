@@ -9,17 +9,19 @@ import java.util.ArrayList;
 public enum TouchChecker {
   INSTANCE;
 
-  public void checkTouchActor(Frog frog, ArrayList<AutomaticActor> automaticActors) {
+  public void checkTouchActor(Frog frog, ArrayList<AutomaticActor> automaticActors, ArrayList<End> ends) {
     if (frog.getDeath() != Death.NONE) return;
-    boolean isTouchActor = false;
     Bounds frogBounds = frog.localToScene(frog.getBoundsInLocal());
+    for (End end : ends) {
+      Bounds endBounds = end.localToScene(end.getBoundsInLocal());
+      if (frogBounds.intersects(endBounds)) TouchHandler.INSTANCE.touchEnd(frog, end);
+    }
+    boolean isTouchActor = false;
     for (AutomaticActor automaticActor : automaticActors) {
       Bounds actorBounds = automaticActor.localToScene(automaticActor.getBoundsInLocal());
       if (frogBounds.intersects(actorBounds)) {
         isTouchActor = true;
-        if (automaticActor instanceof End) {
-          TouchHandler.INSTANCE.touchEnd(frog, (End) automaticActor);
-        } else if (automaticActor instanceof Log) {
+        if (automaticActor instanceof Log) {
           TouchHandler.INSTANCE.touchLog(frog, (Log) automaticActor);
         } else if (automaticActor instanceof Turtle) {
           TouchHandler.INSTANCE.touchTurtle(frog, (Turtle) automaticActor);

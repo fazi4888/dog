@@ -1,6 +1,6 @@
 package frogger.util;
 
-import frogger.constant.PreLoadActor;
+import frogger.constant.PreloadedActor;
 import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.model.actor.AutomaticActor;
@@ -35,18 +35,18 @@ public class WorldLoader {
   }
 
   private void readActor() {
-    frogA = PreLoadActor.INSTANCE.frogA;
-    frogB = PreLoadActor.INSTANCE.frogB;
-    ends = PreLoadActor.INSTANCE.ends;
+    frogA = PreloadedActor.INSTANCE.frogA;
+    frogB = PreloadedActor.INSTANCE.frogB;
+    ends = PreloadedActor.INSTANCE.ends;
     switch (gameLevel) {
       case EASY:
-        movableActors = PreLoadActor.INSTANCE.easyAutoActors;
+        movableActors = PreloadedActor.INSTANCE.easyAutoActors;
         break;
       case MEDIUM:
-        movableActors = PreLoadActor.INSTANCE.mediumAutoActors;
+        movableActors = PreloadedActor.INSTANCE.mediumAutoActors;
         break;
       case HARD:
-        movableActors = PreLoadActor.INSTANCE.hardAutoActors;
+        movableActors = PreloadedActor.INSTANCE.hardAutoActors;
         break;
     }
   }

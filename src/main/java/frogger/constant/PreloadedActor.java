@@ -4,7 +4,7 @@ import frogger.model.actor.*;
 
 import java.util.ArrayList;
 
-public enum PreLoadActor {
+public enum PreloadedActor {
   INSTANCE;
 
   public Frog frogA = new Frog(FileName.IMAGE_FROG_UP, 150);

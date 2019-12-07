@@ -24,10 +24,16 @@ public class Frog extends Actor {
   private int size = 50;
   private double movementY = 34;
   private double movementX = 20;
+
   private boolean isJumping;
+  private boolean hasJump;
   private boolean noMove;
   private Death death;
   private int deathImgIndex = 0;
+
+  private int score;
+  private int life;
+  private int touchedEndAmount;
 
   public Frog(String imageLink, int xpos) {
     super(imageLink, xpos, 965, 50, 50);
@@ -37,12 +43,21 @@ public class Frog extends Actor {
 
   @Override
   public void resetActor() {
+    score = 0;
+    life = 3;
+    touchedEndAmount = 0;
+    rebirth();
+  }
+
+  private void rebirth() {
+    System.out.println("current life: " + life + "; current score " + score);
     super.resetActor();
     setDeath(Death.NONE);
     setImage(imgW);
     isJumping = false;
-    noMove = false;
+    noMove = life == 0;
     deathImgIndex = 0;
+    hasJump = false;
   }
 
   public void setDeath(Death death) {
@@ -53,7 +68,31 @@ public class Frog extends Actor {
     return death;
   }
 
+  public int getScore() {
+    return score;
+  }
+
+  public int getLife() {
+    return life;
+  }
+
+  public void gainScore(int value) {
+    score += value;
+    System.out.println("gain score: " + value + "; current score: " + score);
+  }
+
+  public void loseScore(int value) {
+    score = Math.max(0, score - value);
+  }
+
+  public void loseLife() {
+    loseScore(50);
+    life--;
+    if (life == 0) noMove = true;
+  }
+
   public void jump(Direction direction, boolean isMoving) {
+    if (!hasJump && !isMoving) return;
     if (noMove && !isJumping) return;
     switch (direction) {
       case UP:
@@ -74,6 +113,7 @@ public class Frog extends Actor {
         break;
     }
     isJumping = (isMoving) ? !isJumping : false;
+    if (isMoving) hasJump = true;
   }
 
   @Override
@@ -82,16 +122,13 @@ public class Frog extends Actor {
   }
 
   public void touchEnd() {
+    gainScore(200);
     noMove = true;
-    resetActor();
-  }
-
-  public void touchWater() {
-    setDeath(Death.WATER);
-  }
-
-  public void touchCar() {
-    setDeath(Death.CAR);
+    touchedEndAmount++;
+    if (touchedEndAmount == 5) {
+      gainScore(1000);
+    }
+    rebirth();
   }
 
   public void touchLogOrTurtle(double speed) {
@@ -106,7 +143,8 @@ public class Frog extends Actor {
       setImage(currentDeathImg.get(deathImgIndex));
       if (now % 11 == 0) deathImgIndex++;
     } else {
-      resetActor();
+      loseLife();
+      rebirth();
     }
   }
 
