@@ -1,7 +1,12 @@
 package frogger.constant;
 
 public class FileName {
+  public static final String VIEW_HOME = "/frogger/view/home.fxml";
+  public static final String VIEW_SELECTION = "/frogger/view/selection.fxml";
+  public static final String VIEW_GAME = "/frogger/view/game.fxml";
+
   public static final String IMAGE_FROG_PREFIX = "/frogger/image/frog/frogger";
+  public static final String IMAGE_FROG_UP = "/frogger/image/frog/froggerUp.png";
 
   public static final String IMAGE_DEATH_CAR_1 = "/frogger/image/death/cardeath1.png";
   public static final String IMAGE_DEATH_CAR_2 = "/frogger/image/death/cardeath2.png";
@@ -35,6 +40,4 @@ public class FileName {
   public static final String IMAGE_TRUCK_SHORT_RIGHT = "/frogger/image/car/truck1Right.png";
   public static final String IMAGE_TRUCK_LONG_LEFT = "/frogger/image/car/truck2Left.png";
   public static final String IMAGE_TRUCK_LONG_RIGHT = "/frogger/image/car/truck2Right.png";
-
-  public static final String IMAGE_FROG_UP = "/frogger/image/frog/froggerUp.png";
 }

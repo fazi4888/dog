@@ -1,6 +1,7 @@
 package frogger.util;
 
 import frogger.Main;
+import frogger.constant.FileName;
 import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.controller.GameController;
@@ -32,7 +33,7 @@ public enum SceneSwitch {
   }
 
   public void switchToHome() {
-    changeScene("/frogger/view/home.fxml");
+    changeScene(FileName.VIEW_HOME);
 
     HomeAnimation homeAnimation = new HomeAnimation();
     root.getChildren().add(homeAnimation.getFrog());
@@ -40,11 +41,11 @@ public enum SceneSwitch {
   }
 
   public void switchToSelection() {
-    changeScene("/frogger/view/selection.fxml");
+    changeScene(FileName.VIEW_SELECTION);
   }
 
   public void switchToGame(GameMode gameMode, GameLevel gameLevel) {
-    changeScene("/frogger/view/game.fxml");
+    changeScene(FileName.VIEW_GAME);
 
     GameController gameController = loader.getController();
     Game game = new Game(gameController, gameMode, gameLevel, root);
@@ -52,7 +53,5 @@ public enum SceneSwitch {
 
     scene.addEventHandler(KeyEvent.KEY_PRESSED, game.getWorld()::keyPressed);
     scene.addEventHandler(KeyEvent.KEY_RELEASED, game.getWorld()::keyReleased);
-
-    Main.getPrimaryStage().show();
   }
 }
