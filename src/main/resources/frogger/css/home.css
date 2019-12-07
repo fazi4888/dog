@@ -1,5 +1,5 @@
 .root {
-    -fx-background-image: url("../image/iKogsKW.png");
+    -fx-background-image: url("../image/HomeBackground.png");
     -fx-background-size: 100%;
 }
 
@@ -27,8 +27,8 @@
     -fx-background-image: url("../image/home/startbtn.png");
 }
 
-.menu__item--scoreboard {
-    -fx-background-image: url("../image/home/scoreboardbtn.png");
+.menu__item--help {
+    -fx-background-image: url("../image/home/helpbtn.png");
 }
 
 .menu__item--exit {

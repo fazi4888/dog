@@ -35,8 +35,8 @@ public class Frog extends Actor {
   private int life;
   private int touchedEndAmount;
 
-  public Frog(String imageLink, int xpos) {
-    super(imageLink, xpos, 965, 50, 50);
+  public Frog(String imageLink, int xpos, int ypos) {
+    super(imageLink, xpos, ypos, 50, 50);
     initFrogStateImage();
     initDeathImage();
   }
@@ -104,8 +104,10 @@ public class Frog extends Actor {
         setImage((isJumping) ? imgA : imgAJump);
         break;
       case DOWN:
-        move(0, movementY);
-        setImage((isJumping) ? imgS : imgSJump);
+        if (getY() + movementY < 980) {
+          move(0, movementY);
+          setImage((isJumping) ? imgS : imgSJump);
+        }
         break;
       case RIGHT:
         move(movementX, 0);

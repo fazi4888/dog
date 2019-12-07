@@ -2,7 +2,6 @@ package frogger.controller;
 
 import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
-import frogger.model.World;
 import frogger.util.MusicPlayer;
 import frogger.util.SceneSwitch;
 import javafx.application.Platform;
@@ -11,17 +10,22 @@ import javafx.scene.control.Button;
 
 public class HomeController {
 
-  @FXML public Button musicon;;
-  @FXML public Button musicoff;
+  @FXML private Button musicon;;
+  @FXML private Button musicoff;
+
+  @FXML
+  public void initialize() {
+    updateMusicBtn();
+  }
 
   @FXML
   public void startGame() {
-//    SceneSwitch.INSTANCE.switchToSelection();
+    //    SceneSwitch.INSTANCE.switchToSelection();
     SceneSwitch.INSTANCE.switchToGame(GameMode.DOUBLE, GameLevel.EASY);
   }
 
   @FXML
-  public void showScoreboard() {}
+  public void showHelp() {}
 
   @FXML
   public void exitGame() {
@@ -38,7 +42,7 @@ public class HomeController {
     updateMusicBtn();
   }
 
-  public void updateMusicBtn() {
+  private void updateMusicBtn() {
     if (MusicPlayer.INSTANCE.isOn()) {
       musicon.setStyle("-fx-opacity: 1");
       musicoff.setStyle("-fx-opacity: 0");

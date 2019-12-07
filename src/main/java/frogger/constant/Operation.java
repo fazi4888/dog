@@ -18,10 +18,10 @@ public class Operation {
   public static final Map<KeyCode, Direction> DIRECTION_B =
       new HashMap<>() {
         {
-          put(KeyCode.UP, Direction.UP);
-          put(KeyCode.LEFT, Direction.LEFT);
-          put(KeyCode.DOWN, Direction.DOWN);
-          put(KeyCode.RIGHT, Direction.RIGHT);
+          put(KeyCode.I, Direction.UP);
+          put(KeyCode.J, Direction.LEFT);
+          put(KeyCode.K, Direction.DOWN);
+          put(KeyCode.L, Direction.RIGHT);
         }
       };
 }

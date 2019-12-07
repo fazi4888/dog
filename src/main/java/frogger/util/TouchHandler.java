@@ -2,7 +2,6 @@ package frogger.util;
 
 import frogger.constant.Death;
 import frogger.constant.GameMode;
-import frogger.model.Game;
 import frogger.model.actor.*;
 
 import java.util.ArrayList;
@@ -10,11 +9,11 @@ import java.util.ArrayList;
 public enum TouchHandler {
   INSTANCE;
 
-  private Game game;
+  private GameMode gameMode;
   private ArrayList<End> activatedEnds = new ArrayList<>();
 
-  public void init(Game game) {
-    this.game = game;
+  public void init(GameMode gameMode) {
+    this.gameMode = gameMode;
     activatedEnds.clear();
   }
 
@@ -28,7 +27,7 @@ public enum TouchHandler {
   }
 
   private void touchAllEnd() {
-    if (game.getGameMode() == GameMode.DOUBLE) {
+    if (gameMode == GameMode.DOUBLE) {
       activatedEnds.forEach(End::resetActor);
     }
   }
