@@ -52,5 +52,7 @@ public enum SceneSwitch {
 
     scene.addEventHandler(KeyEvent.KEY_PRESSED, game.getWorld()::keyPressed);
     scene.addEventHandler(KeyEvent.KEY_RELEASED, game.getWorld()::keyReleased);
+
+    Main.getPrimaryStage().show();
   }
 }

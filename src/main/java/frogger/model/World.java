@@ -50,10 +50,12 @@ public class World {
   }
 
   public void keyPressed(KeyEvent event) {
+    System.out.println("KeyPressed " + event.getCode());
     judgeFrogJump(event, true);
   }
 
   public void keyReleased(KeyEvent event) {
+    System.out.println("KeyReleased " + event.getCode());
     judgeFrogJump(event, false);
   }
 
