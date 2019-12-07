@@ -9,15 +9,8 @@ import java.util.ArrayList;
 
 public class Frog extends Actor {
 
-  private Image imgW;
-  private Image imgA;
-  private Image imgS;
-  private Image imgD;
-  private Image imgWJump;
-  private Image imgAJump;
-  private Image imgSJump;
-  private Image imgDJump;
-
+  private ArrayList<Image> moveImg;
+  private ArrayList<Image> moveImgJump;
   private ArrayList<Image> carDeath;
   private ArrayList<Image> waterDeath;
 
@@ -38,13 +31,11 @@ public class Frog extends Actor {
 
   public Frog(String imageLink, int xpos, int ypos) {
     super(imageLink, xpos, ypos, 50, 50);
-    initFrogStateImage();
-    initDeathImage();
+    initStateImages();
   }
 
   @Override
   public void resetActor() {
-    highestY = 965;
     score = 0;
     life = 3;
     touchedEndAmount = 0;
@@ -55,11 +46,12 @@ public class Frog extends Actor {
     System.out.println("current life: " + life + "; current score " + score);
     super.resetActor();
     setDeath(Death.NONE);
-    setImage(imgW);
+    setImage(moveImg.get(0));
     isJumping = false;
     noMove = life == 0;
     deathImgIndex = 0;
     hasJump = false;
+    highestY = 965;
   }
 
   public void setDeath(Death death) {
@@ -99,22 +91,22 @@ public class Frog extends Actor {
     switch (direction) {
       case UP:
         move(0, -movementY);
-        setImage((isJumping) ? imgW : imgWJump);
+        setImage((isJumping) ? moveImg.get(0) : moveImgJump.get(0));
         if (isMoving) checkValidForwardStep();
         break;
       case LEFT:
         move(-movementX, 0);
-        setImage((isJumping) ? imgA : imgAJump);
+        setImage((isJumping) ? moveImg.get(1) : moveImgJump.get(1));
         break;
       case DOWN:
         if (getY() + movementY < 980) {
           move(0, movementY);
-          setImage((isJumping) ? imgS : imgSJump);
+          setImage((isJumping) ? moveImg.get(2) : moveImgJump.get(2));
         }
         break;
       case RIGHT:
         move(movementX, 0);
-        setImage((isJumping) ? imgD : imgDJump);
+        setImage((isJumping) ? moveImg.get(3) : moveImgJump.get(3));
         break;
     }
     isJumping = (isMoving) ? !isJumping : false;
@@ -160,18 +152,25 @@ public class Frog extends Actor {
     }
   }
 
-  private void initFrogStateImage() {
-    imgW = new Image(FileName.IMAGE_FROG_PREFIX + "Up.png", size, size, true, true);
-    imgA = new Image(FileName.IMAGE_FROG_PREFIX + "Left.png", size, size, true, true);
-    imgS = new Image(FileName.IMAGE_FROG_PREFIX + "Down.png", size, size, true, true);
-    imgD = new Image(FileName.IMAGE_FROG_PREFIX + "Right.png", size, size, true, true);
-    imgWJump = new Image(FileName.IMAGE_FROG_PREFIX + "UpJump.png", size, size, true, true);
-    imgAJump = new Image(FileName.IMAGE_FROG_PREFIX + "LeftJump.png", size, size, true, true);
-    imgSJump = new Image(FileName.IMAGE_FROG_PREFIX + "DownJump.png", size, size, true, true);
-    imgDJump = new Image(FileName.IMAGE_FROG_PREFIX + "RightJump.png", size, size, true, true);
-  }
-
-  private void initDeathImage() {
+  private void initStateImages() {
+    moveImg =
+        new ArrayList<>() {
+          {
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "Up.png", size, size, true, true));
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "Left.png", size, size, true, true));
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "Down.png", size, size, true, true));
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "Right.png", size, size, true, true));
+          }
+        };
+    moveImgJump =
+        new ArrayList<>() {
+          {
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "UpJump.png", size, size, true, true));
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "LeftJump.png", size, size, true, true));
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "DownJump.png", size, size, true, true));
+            add(new Image(FileName.IMAGE_FROG_PREFIX + "RightJump.png", size, size, true, true));
+          }
+        };
     carDeath =
         new ArrayList<>() {
           {
