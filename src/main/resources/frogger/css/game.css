@@ -12,6 +12,17 @@
     -fx-font-size: 22px;
 }
 
+.content {
+    -fx-alignment: center;
+}
+
+.prompt {
+    -fx-alignment: center;
+    -fx-background-color: black;
+    -fx-font-family: 'Retro Gaming';
+    -fx-font-size: 22px;
+}
+
 .backToHome {
     -fx-background-color: rgba(255, 255, 255, 0);
     -fx-font-family: 'Retro Gaming';

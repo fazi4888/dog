@@ -72,6 +72,4 @@ public enum SceneSwitch {
   }
 
   public void showScoreboard() {}
-
-  public void showDoubleModeResult() {}
 }

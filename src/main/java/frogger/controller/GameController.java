@@ -4,6 +4,7 @@ import frogger.util.MusicPlayer;
 import frogger.util.SceneSwitch;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -22,11 +23,13 @@ public class GameController {
   @FXML private ArrayList<ImageView> lifesA;
   @FXML private ArrayList<ImageView> lifesB;
 
+  @FXML private Label resultPrompt;
   @FXML private Button backHome;
 
   @FXML
   public void initialize() {
     updateMusicBtn();
+    resultPrompt.setVisible(false);
     backHome.setVisible(false);
     backHome.setDisable(true);
   }
@@ -44,6 +47,11 @@ public class GameController {
   @FXML
   public void backToHome() {
     SceneSwitch.INSTANCE.switchToHome();
+  }
+
+  public void setResultPrompt(String prompt) {
+    resultPrompt.setText(prompt);
+    resultPrompt.setVisible(true);
   }
 
   public void updateBackBtn() {

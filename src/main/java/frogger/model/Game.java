@@ -54,8 +54,23 @@ public class Game {
 
   private void endGame() {
     timer.stop();
-    if (!isDoubleMode()) SceneSwitch.INSTANCE.showScoreboard();
-    else SceneSwitch.INSTANCE.showDoubleModeResult();
+    String prompt;
+    if (!isDoubleMode()) {
+      SceneSwitch.INSTANCE.showScoreboard();
+      prompt = "Game Over";
+    } else {
+      int scoreA = world.getFrogA().getScore();
+      int scoreB = world.getFrogB().getScore();
+      if (scoreA == scoreB) {
+        prompt = "You're Tie!!";
+      } else {
+        String frogAName = world.getFrogA().getNickname();
+        String frogBName = world.getFrogB().getNickname();
+        if (scoreA > scoreB) prompt = frogAName + " BEATS " + frogBName + "!!";
+        else prompt = frogBName + " BEATS " + frogAName + "!!";
+      }
+    }
+    gameController.setResultPrompt(prompt);
     gameController.updateBackBtn();
   }
 
