@@ -104,8 +104,10 @@ public class Frog extends Actor {
         setImage((isJumping) ? imgA : imgAJump);
         break;
       case DOWN:
-        move(0, movementY);
-        setImage((isJumping) ? imgS : imgSJump);
+        if (getY() + movementY < 980) {
+          move(0, movementY);
+          setImage((isJumping) ? imgS : imgSJump);
+        }
         break;
       case RIGHT:
         move(movementX, 0);
