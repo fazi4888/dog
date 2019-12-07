@@ -10,8 +10,8 @@ import javafx.scene.control.Button;
 
 public class HomeController {
 
-  @FXML public Button musicon;;
-  @FXML public Button musicoff;
+  @FXML private Button musicon;;
+  @FXML private Button musicoff;
 
   @FXML
   public void initialize() {

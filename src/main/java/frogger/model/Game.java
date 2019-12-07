@@ -26,6 +26,11 @@ public class Game {
     this.gameStatus = GameStatus.START;
     this.world = new World(new WorldLoader(gameMode, gameLevel, root));
     TouchHandler.INSTANCE.init(this);
+    initGameScreen();
+  }
+
+  private void initGameScreen() {
+    if (!isDoubleMode()) gameController.hidePlayerBInfo();
   }
 
   public GameStatus getGameStatus() {
@@ -54,8 +59,13 @@ public class Game {
     gameStatus = GameStatus.END;
   }
 
+  private void updateScore() {
+    gameController.updateScore(true, world.getFrogA().getScore());
+    if (isDoubleMode()) gameController.updateScore(false, world.getFrogB().getScore());
+  }
+
   private boolean checkWin() {
-    if (gameMode == GameMode.SINGLE) {
+    if (!isDoubleMode()) {
       for (End end : world.getEnds()) {
         if (!end.isActivated()) return false;
       }
@@ -78,6 +88,7 @@ public class Game {
         @Override
         public void handle(long now) {
           world.run(now);
+          updateScore();
           if (checkWin() || checkLose()) endGame();
         }
       };
@@ -88,5 +99,9 @@ public class Game {
 
   private void stop() {
     timer.stop();
+  }
+
+  private boolean isDoubleMode() {
+    return gameMode == GameMode.DOUBLE;
   }
 }
