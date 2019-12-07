@@ -4,7 +4,6 @@ import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.constant.GameStatus;
 import frogger.controller.GameController;
-import frogger.model.actor.AutomaticActor;
 import frogger.model.actor.End;
 import frogger.util.TouchHandler;
 import frogger.util.WorldLoader;
@@ -26,7 +25,6 @@ public class Game {
     this.gameLevel = gameLevel;
     this.gameStatus = GameStatus.START;
     this.world = new World(new WorldLoader(gameMode, gameLevel, root));
-    this.gameController.initController(this);
     TouchHandler.INSTANCE.init(this);
   }
 

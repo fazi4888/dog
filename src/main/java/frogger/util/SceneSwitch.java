@@ -47,8 +47,8 @@ public enum SceneSwitch {
       Game game = new Game(gameController, gameMode, gameLevel, root);
       game.startGame();
 
-      scene.addEventHandler(KeyEvent.KEY_PRESSED, gameController::keyPressed);
-      scene.addEventHandler(KeyEvent.KEY_RELEASED, gameController::keyReleased);
+      scene.addEventHandler(KeyEvent.KEY_PRESSED, game.getWorld()::keyPressed);
+      scene.addEventHandler(KeyEvent.KEY_RELEASED, game.getWorld()::keyReleased);
 
       Main.getPrimaryStage().show();
     } catch (IOException e) {
