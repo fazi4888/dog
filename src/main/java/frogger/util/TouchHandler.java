@@ -1,5 +1,8 @@
 package frogger.util;
 
+import frogger.constant.Death;
+import frogger.constant.GameMode;
+import frogger.model.Game;
 import frogger.model.actor.*;
 
 import java.util.ArrayList;
@@ -7,9 +10,11 @@ import java.util.ArrayList;
 public enum TouchHandler {
   INSTANCE;
 
+  private Game game;
   private ArrayList<End> activatedEnds = new ArrayList<>();
 
-  public void init() {
+  public void init(Game game) {
+    this.game = game;
     activatedEnds.clear();
   }
 
@@ -18,14 +23,14 @@ public enum TouchHandler {
       frog.touchEnd();
       end.setEnd();
       activatedEnds.add(end);
-      if (activatedEnds.size() == 5) {
-        touchAllEnd(frog);
-      }
+      if (activatedEnds.size() == 5) touchAllEnd();
     }
   }
 
-  private void touchAllEnd(Frog frog) {
-    activatedEnds.forEach(End::resetActor);
+  private void touchAllEnd() {
+    if (game.getGameMode() == GameMode.DOUBLE) {
+      activatedEnds.forEach(End::resetActor);
+    }
   }
 
   public void touchLog(Frog frog, Log log) {
@@ -33,7 +38,7 @@ public enum TouchHandler {
   }
 
   public void touchCar(Frog frog) {
-    frog.touchCar();
+    frog.setDeath(Death.CAR);
   }
 
   public void touchTurtle(Frog frog, Turtle turtle) {
@@ -49,6 +54,6 @@ public enum TouchHandler {
   }
 
   public void touchWater(Frog frog) {
-    frog.touchWater();
+    frog.setDeath(Death.WATER);
   }
 }
