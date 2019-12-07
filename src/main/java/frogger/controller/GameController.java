@@ -3,7 +3,10 @@ package frogger.controller;
 import frogger.util.MusicPlayer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+
+import java.util.ArrayList;
 
 public class GameController {
 
@@ -14,6 +17,9 @@ public class GameController {
   @FXML private Text scoreNumberA;
   @FXML private Text scoreTitleB;
   @FXML private Text scoreNumberB;
+
+  @FXML private ArrayList<ImageView> lifesA;
+  @FXML private ArrayList<ImageView> lifesB;
 
   @FXML
   public void initialize() {
@@ -33,11 +39,17 @@ public class GameController {
   public void hidePlayerBInfo() {
     scoreTitleB.setVisible(false);
     scoreNumberB.setVisible(false);
+    for (ImageView life : lifesB) life.setVisible(false);
   }
 
-  public void updateScore(boolean isPlayerA, int value) {
-    if (isPlayerA) scoreNumberA.setText(String.format("%04d", value));
-    else scoreNumberB.setText(String.format("%04d", value));
+  public void updateScore(int scoreA, int scoreB) {
+    scoreNumberA.setText(String.format("%04d", scoreA));
+    scoreNumberB.setText(String.format("%04d", scoreB));
+  }
+
+  public void updateLife(int lifeA, int lifeB) {
+    for (int i = 3; i > lifeA; i--) lifesA.get(i - 1).setVisible(false);
+    for (int i = 3; i > lifeB; i--) lifesB.get(i - 1).setVisible(false);
   }
 
   private void updateMusicBtn() {
