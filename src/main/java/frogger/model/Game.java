@@ -4,6 +4,7 @@ import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.controller.GameController;
 import frogger.model.actor.End;
+import frogger.util.SceneSwitch;
 import frogger.util.WorldLoader;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
@@ -26,10 +27,6 @@ public class Game {
 
   private void initGameScreen() {
     if (!isDoubleMode()) gameController.hidePlayerBInfo();
-  }
-
-  public GameMode getGameMode() {
-    return gameMode;
   }
 
   public GameLevel getGameLevel() {
@@ -57,6 +54,9 @@ public class Game {
 
   private void endGame() {
     timer.stop();
+    if (!isDoubleMode()) SceneSwitch.INSTANCE.showScoreboard();
+    else SceneSwitch.INSTANCE.showDoubleModeResult();
+    gameController.updateBackBtn();
   }
 
   private void updateScore() {

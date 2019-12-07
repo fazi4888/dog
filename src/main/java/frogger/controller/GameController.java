@@ -1,6 +1,7 @@
 package frogger.controller;
 
 import frogger.util.MusicPlayer;
+import frogger.util.SceneSwitch;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -21,9 +22,13 @@ public class GameController {
   @FXML private ArrayList<ImageView> lifesA;
   @FXML private ArrayList<ImageView> lifesB;
 
+  @FXML private Button backHome;
+
   @FXML
   public void initialize() {
     updateMusicBtn();
+    backHome.setVisible(false);
+    backHome.setDisable(true);
   }
 
   @FXML
@@ -34,6 +39,16 @@ public class GameController {
       MusicPlayer.INSTANCE.playMusic();
     }
     updateMusicBtn();
+  }
+
+  @FXML
+  public void backToHome() {
+    SceneSwitch.INSTANCE.switchToHome();
+  }
+
+  public void updateBackBtn() {
+    backHome.setVisible(true);
+    backHome.setDisable(false);
   }
 
   public void hidePlayerBInfo() {
