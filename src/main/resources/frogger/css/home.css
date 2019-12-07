@@ -27,8 +27,8 @@
     -fx-background-image: url("../image/home/startbtn.png");
 }
 
-.menu__item--scoreboard {
-    -fx-background-image: url("../image/home/scoreboardbtn.png");
+.menu__item--help {
+    -fx-background-image: url("../image/home/helpbtn.png");
 }
 
 .menu__item--exit {

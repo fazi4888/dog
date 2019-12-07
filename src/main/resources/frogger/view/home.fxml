@@ -20,10 +20,10 @@
                   <String fx:value="menu__item" />
                   <String fx:value="menu__item--start" />
                </styleClass></Button>
-            <Button id="scoreboard" mnemonicParsing="false" onAction="#showHelp" prefHeight="180.0" prefWidth="470.0">
+            <Button id="scoreboard" mnemonicParsing="false" onAction="#showHelp" prefHeight="180.0" prefWidth="280.0">
                <styleClass>
                   <String fx:value="menu__item" />
-                  <String fx:value="menu__item--scoreboard" />
+                  <String fx:value="menu__item--help" />
                </styleClass></Button>
             <Button id="exit" mnemonicParsing="false" onAction="#exitGame" prefHeight="180.0" prefWidth="280.0">
                <styleClass>
