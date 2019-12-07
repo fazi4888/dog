@@ -20,7 +20,7 @@
                   <String fx:value="menu__item" />
                   <String fx:value="menu__item--start" />
                </styleClass></Button>
-            <Button id="scoreboard" mnemonicParsing="false" onAction="#showScoreboard" prefHeight="180.0" prefWidth="470.0">
+            <Button id="scoreboard" mnemonicParsing="false" onAction="#showHelp" prefHeight="180.0" prefWidth="470.0">
                <styleClass>
                   <String fx:value="menu__item" />
                   <String fx:value="menu__item--scoreboard" />
