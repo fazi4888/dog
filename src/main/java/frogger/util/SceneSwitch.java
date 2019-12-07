@@ -49,6 +49,7 @@ public enum SceneSwitch {
 
     GameController gameController = loader.getController();
     Game game = new Game(gameController, gameMode, gameLevel, root);
+    TouchHandler.INSTANCE.init(gameMode);
     game.startGame();
 
     scene.addEventHandler(KeyEvent.KEY_PRESSED, game.getWorld()::keyPressed);
