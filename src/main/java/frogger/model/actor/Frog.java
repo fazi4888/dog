@@ -35,8 +35,8 @@ public class Frog extends Actor {
   private int life;
   private int touchedEndAmount;
 
-  public Frog(String imageLink, int xpos) {
-    super(imageLink, xpos, 965, 50, 50);
+  public Frog(String imageLink, int xpos, int ypos) {
+    super(imageLink, xpos, ypos, 50, 50);
     initFrogStateImage();
     initDeathImage();
   }

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public enum PreloadedActor {
   INSTANCE;
 
-  public Frog frogA = new Frog(FileName.IMAGE_FROG_UP, 150);
-  public Frog frogB = new Frog(FileName.IMAGE_FROG_UP, 600);
+  public Frog frogA = new Frog(FileName.IMAGE_FROG_UP, 150, 965);
+  public Frog frogB = new Frog(FileName.IMAGE_FROG_UP, 600, 965);
 
   public ArrayList<End> ends =
       new ArrayList<>() {

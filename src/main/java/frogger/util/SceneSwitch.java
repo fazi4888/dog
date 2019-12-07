@@ -33,6 +33,10 @@ public enum SceneSwitch {
 
   public void switchToHome() {
     changeScene("/frogger/view/home.fxml");
+
+    HomeAnimation homeAnimation = new HomeAnimation();
+    root.getChildren().add(homeAnimation.getFrog());
+    homeAnimation.start();
   }
 
   public void switchToSelection() {
