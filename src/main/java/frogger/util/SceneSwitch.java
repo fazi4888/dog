@@ -15,11 +15,15 @@ import java.io.IOException;
 public enum SceneSwitch {
   INSTANCE;
 
+  private FXMLLoader loader;
+  private Pane root;
+  private Scene scene;
+
   private void changeScene(String fxmlFile) {
     try {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-      Pane root = loader.load();
-      Scene scene = new Scene(root);
+      this.loader = new FXMLLoader(getClass().getResource(fxmlFile));
+      this.root = loader.load();
+      this.scene = new Scene(root);
       Main.getPrimaryStage().setScene(scene);
       Main.getPrimaryStage().show();
     } catch (IOException e) {
@@ -32,27 +36,17 @@ public enum SceneSwitch {
   }
 
   public void switchToSelection() {
-//    changeScene("/frogger/view/selection.fxml");
+    changeScene("/frogger/view/selection.fxml");
   }
 
   public void switchToGame(GameMode gameMode, GameLevel gameLevel) {
-    try {
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/frogger/view/game.fxml"));
-      Pane root = loader.load();
-      Scene scene = new Scene(root);
-      Main.getPrimaryStage().setScene(scene);
+    changeScene("/frogger/view/game.fxml");
 
+    GameController gameController = loader.getController();
+    Game game = new Game(gameController, gameMode, gameLevel, root);
+    game.startGame();
 
-      GameController gameController = loader.getController();
-      Game game = new Game(gameController, gameMode, gameLevel, root);
-      game.startGame();
-
-      scene.addEventHandler(KeyEvent.KEY_PRESSED, game.getWorld()::keyPressed);
-      scene.addEventHandler(KeyEvent.KEY_RELEASED, game.getWorld()::keyReleased);
-
-      Main.getPrimaryStage().show();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    scene.addEventHandler(KeyEvent.KEY_PRESSED, game.getWorld()::keyPressed);
+    scene.addEventHandler(KeyEvent.KEY_RELEASED, game.getWorld()::keyReleased);
   }
 }
