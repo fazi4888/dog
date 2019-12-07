@@ -88,7 +88,7 @@ public class Frog extends Actor {
   }
 
   public void loseLife() {
-    loseScore(50);
+    loseScore(100);
     life--;
     if (life == 0) noMove = true;
   }
