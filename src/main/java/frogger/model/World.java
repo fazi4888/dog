@@ -42,10 +42,10 @@ public class World {
   public void run(long now) {
     for (AutomaticActor automaticActor : automaticActors) automaticActor.act(now);
     frogA.act(now);
-    TouchChecker.INSTANCE.checkTouchActor(frogA, automaticActors, ends);
+    TouchChecker.INSTANCE.touchActor(frogA, automaticActors, ends);
     if (frogB != null) {
       frogB.act(now);
-      TouchChecker.INSTANCE.checkTouchActor(frogB, automaticActors, ends);
+      TouchChecker.INSTANCE.touchActor(frogB, automaticActors, ends);
     }
   }
 
