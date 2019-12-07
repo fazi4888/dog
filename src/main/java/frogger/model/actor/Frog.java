@@ -31,6 +31,7 @@ public class Frog extends Actor {
   private Death death;
   private int deathImgIndex = 0;
 
+  private double higestY;
   private int score;
   private int life;
   private int touchedEndAmount;
@@ -43,6 +44,7 @@ public class Frog extends Actor {
 
   @Override
   public void resetActor() {
+    higestY = 965;
     score = 0;
     life = 3;
     touchedEndAmount = 0;
@@ -98,6 +100,7 @@ public class Frog extends Actor {
       case UP:
         move(0, -movementY);
         setImage((isJumping) ? imgW : imgWJump);
+        if (isMoving) checkValidForwardStep();
         break;
       case LEFT:
         move(-movementX, 0);
@@ -116,6 +119,13 @@ public class Frog extends Actor {
     }
     isJumping = (isMoving) ? !isJumping : false;
     if (isMoving) hasJump = true;
+  }
+
+  private void checkValidForwardStep() {
+    if (getY() < higestY) {
+      gainScore(20);
+      higestY = getY();
+    }
   }
 
   @Override
