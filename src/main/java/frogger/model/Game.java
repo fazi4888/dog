@@ -4,6 +4,7 @@ import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.controller.GameController;
 import frogger.model.actor.End;
+import frogger.util.SceneSwitch;
 import frogger.util.WorldLoader;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
@@ -26,10 +27,6 @@ public class Game {
 
   private void initGameScreen() {
     if (!isDoubleMode()) gameController.hidePlayerBInfo();
-  }
-
-  public GameMode getGameMode() {
-    return gameMode;
   }
 
   public GameLevel getGameLevel() {
@@ -57,6 +54,24 @@ public class Game {
 
   private void endGame() {
     timer.stop();
+    String prompt;
+    if (!isDoubleMode()) {
+      SceneSwitch.INSTANCE.showScoreboard();
+      prompt = "Game Over";
+    } else {
+      int scoreA = world.getFrogA().getScore();
+      int scoreB = world.getFrogB().getScore();
+      if (scoreA == scoreB) {
+        prompt = "You're Tie!!";
+      } else {
+        String frogAName = world.getFrogA().getNickname();
+        String frogBName = world.getFrogB().getNickname();
+        if (scoreA > scoreB) prompt = frogAName + " BEATS " + frogBName + "!!";
+        else prompt = frogBName + " BEATS " + frogAName + "!!";
+      }
+    }
+    gameController.setResultPrompt(prompt);
+    gameController.updateBackBtn();
   }
 
   private void updateScore() {
