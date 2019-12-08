@@ -5,7 +5,9 @@ import frogger.constant.FileName;
 import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.controller.GameController;
+import frogger.controller.ScoreboardController;
 import frogger.model.Game;
+import frogger.model.actor.Frog;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -20,6 +22,8 @@ public enum SceneSwitch {
   private FXMLLoader loader;
   private Pane root;
   private Scene scene;
+
+  private Frog frog;
 
   private void changeScene(String fxmlFile) {
     try {
@@ -37,12 +41,14 @@ public enum SceneSwitch {
     changeScene(FileName.VIEW_HOME);
 
     HomeAnimation homeAnimation = new HomeAnimation();
-    root.getChildren().add(homeAnimation.getFrog());
+    this.frog = homeAnimation.getFrog();
+    root.getChildren().add(frog);
     homeAnimation.start();
   }
 
   public void switchToSelection() {
     changeScene(FileName.VIEW_SELECTION);
+    root.getChildren().add(frog);
   }
 
   public void switchToGame(GameMode gameMode, GameLevel gameLevel) {
@@ -71,5 +77,21 @@ public enum SceneSwitch {
     }
   }
 
-  public void showScoreboard() {}
+  public void showScoreboard(String gameLevel) {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_SCOREBOARD));
+      Pane root = loader.load();
+      Stage scoreboardStage = new Stage();
+      scoreboardStage.setScene(new Scene(root));
+      scoreboardStage.setResizable(false);
+      scoreboardStage.setTitle("Scoreboard");
+
+      ScoreboardController scoreboardController = loader.getController();
+      scoreboardController.setGameLevel(gameLevel);
+      scoreboardController.init();
+      scoreboardStage.show();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }

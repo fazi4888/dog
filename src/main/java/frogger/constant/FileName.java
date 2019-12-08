@@ -1,10 +1,17 @@
 package frogger.constant;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+
 public class FileName {
+  public static final String SCOREBOARD_DIR = FileUtils.getUserDirectoryPath() + File.separator + ".frogger" + File.separator;
+
   public static final String VIEW_HOME = "/frogger/view/home.fxml";
   public static final String VIEW_SELECTION = "/frogger/view/selection.fxml";
   public static final String VIEW_GAME = "/frogger/view/game.fxml";
   public static final String VIEW_HELP = "/frogger/view/help.fxml";
+  public static final String VIEW_SCOREBOARD = "/frogger/view/scoreboard.fxml";
 
   public static final String IMAGE_FROG_PREFIX = "/frogger/image/frog/frogger";
   public static final String IMAGE_FROG_UP = "/frogger/image/frog/froggerUp.png";

@@ -1,6 +1,29 @@
-.frog {
-    -fx-background-image: url('../image/frog/froggerUp.png');
-    -fx-background-color: transparent;
-    -fx-background-repeat: no-repeat;
-    -fx-background-position: center;
+@font-face {
+    src: url("../font/RetroGaming.ttf");
+}
+
+.root {
+    -fx-background-image: url("../image/HomeBackground.png");
+    -fx-background-size: 100%;
+}
+
+.menu {
+    -fx-alignment: center;
+}
+
+.menu__item {
+    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-font-family: 'Retro Gaming';
+    -fx-font-size: 34px;
+    -fx-opacity: 0.85;
+    -fx-padding: 50px;
+    -fx-effect: dropshadow(three-pass-box, #444444, 15, 0, 0, 0);
+}
+
+.menu__item--go {
+    -fx-font-size: 40px;
+}
+
+.menu__item:hover {
+    -fx-opacity: 1;
 }

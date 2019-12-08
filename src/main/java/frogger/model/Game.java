@@ -5,6 +5,7 @@ import frogger.constant.GameMode;
 import frogger.controller.GameController;
 import frogger.model.actor.End;
 import frogger.util.SceneSwitch;
+import frogger.util.ScoreboardWriter;
 import frogger.util.WorldLoader;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
@@ -29,10 +30,6 @@ public class Game {
     if (!isDoubleMode()) gameController.hidePlayerBInfo();
   }
 
-  public GameLevel getGameLevel() {
-    return gameLevel;
-  }
-
   public World getWorld() {
     return world;
   }
@@ -54,9 +51,25 @@ public class Game {
 
   private void endGame() {
     timer.stop();
+    if (!isDoubleMode()) {
+      recordScore();
+      SceneSwitch.INSTANCE.showScoreboard(gameLevel.name());
+    }
+    gameController.setResultPrompt(generatePrompt());
+    gameController.updateBackBtn();
+  }
+
+  private void recordScore() {
+    String nickname = getWorld().getFrogA().getNickname();
+    String score = String.format("%04d", getWorld().getFrogA().getScore());
+    ScoreboardWriter scoreboardWriter =
+        new ScoreboardWriter(gameLevel.name().toLowerCase() + ".txt");
+    scoreboardWriter.write(nickname + ";" + score + "\n");
+  }
+
+  private String generatePrompt() {
     String prompt;
     if (!isDoubleMode()) {
-      SceneSwitch.INSTANCE.showScoreboard();
       prompt = "Game Over";
     } else {
       int scoreA = world.getFrogA().getScore();
@@ -70,8 +83,7 @@ public class Game {
         else prompt = frogBName + " BEATS " + frogAName + "!!";
       }
     }
-    gameController.setResultPrompt(prompt);
-    gameController.updateBackBtn();
+    return prompt;
   }
 
   private void updateScore() {
