@@ -5,6 +5,7 @@ import frogger.constant.FileName;
 import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.controller.GameController;
+import frogger.controller.ScoreboardController;
 import frogger.model.Game;
 import frogger.model.actor.Frog;
 import javafx.fxml.FXMLLoader;
@@ -76,5 +77,20 @@ public enum SceneSwitch {
     }
   }
 
-  public void showScoreboard() {}
+  public void showScoreboard() {
+    try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_SCOREBOARD));
+      Pane root = loader.load();
+      Stage scoreboardStage = new Stage();
+      scoreboardStage.setScene(new Scene(root));
+      scoreboardStage.setResizable(false);
+
+      ScoreboardController scoreboardController = loader.getController();
+      scoreboardController.setTitle("EASY");
+      scoreboardController.init();
+      scoreboardStage.show();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
 }
