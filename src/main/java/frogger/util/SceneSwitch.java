@@ -6,6 +6,7 @@ import frogger.constant.GameLevel;
 import frogger.constant.GameMode;
 import frogger.controller.GameController;
 import frogger.model.Game;
+import frogger.model.actor.Frog;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -20,6 +21,8 @@ public enum SceneSwitch {
   private FXMLLoader loader;
   private Pane root;
   private Scene scene;
+
+  private Frog frog;
 
   private void changeScene(String fxmlFile) {
     try {
@@ -37,12 +40,14 @@ public enum SceneSwitch {
     changeScene(FileName.VIEW_HOME);
 
     HomeAnimation homeAnimation = new HomeAnimation();
-    root.getChildren().add(homeAnimation.getFrog());
+    this.frog = homeAnimation.getFrog();
+    root.getChildren().add(frog);
     homeAnimation.start();
   }
 
   public void switchToSelection() {
     changeScene(FileName.VIEW_SELECTION);
+    root.getChildren().add(frog);
   }
 
   public void switchToGame(GameMode gameMode, GameLevel gameLevel) {

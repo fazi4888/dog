@@ -1,7 +1,5 @@
 package frogger.controller;
 
-import frogger.constant.GameLevel;
-import frogger.constant.GameMode;
 import frogger.util.MusicPlayer;
 import frogger.util.SceneSwitch;
 import javafx.application.Platform;
@@ -20,12 +18,13 @@ public class HomeController {
 
   @FXML
   public void startGame() {
-    //    SceneSwitch.INSTANCE.switchToSelection();
-    SceneSwitch.INSTANCE.switchToGame(GameMode.DOUBLE, GameLevel.EASY);
+    SceneSwitch.INSTANCE.switchToSelection();
   }
 
   @FXML
-  public void showHelp() {}
+  public void showHelp() {
+    SceneSwitch.INSTANCE.showHelp();
+  }
 
   @FXML
   public void exitGame() {
