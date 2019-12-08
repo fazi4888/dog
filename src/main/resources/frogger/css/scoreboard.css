@@ -1,9 +1,9 @@
 @font-face {
-    src: url("../font/RetroGaming.ttf");
+    src: url("../font/joystixmonospace.ttf");
 }
 
 .root {
-    -fx-font-family: 'Retro Gaming';
+    -fx-font-family: 'Joystix Monospace';
     -fx-background-color: black;
 }
 
@@ -21,11 +21,11 @@
 }
 
 .list-view .list-cell:odd {
-    -fx-text-fill: green;
+    -fx-text-fill: #ffab00;
 }
 
 .list-view .list-cell:even {
-    -fx-text-fill: red;
+    -fx-text-fill: #e600ff;
 }
 
 .rank .list-cell {

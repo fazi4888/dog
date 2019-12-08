@@ -1,5 +1,6 @@
 package frogger.controller;
 
+import frogger.util.ScoreboardReader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,54 +20,29 @@ public class ScoreboardController {
   private List<String> names = new ArrayList<>();
   private List<String> scores = new ArrayList<>();
 
-  private String title;
+  private String gameLevel;
 
-  @FXML
-  public void initialize() {
-    ranks.add("RANK");
-    ranks.add("1ST");
-    ranks.add("2ND");
-    ranks.add("3RD");
-    ranks.add("4TH");
-    ranks.add("5TH");
-    ranks.add("6TH");
-    ranks.add("7TH");
-    ranks.add("8TH");
-    ranks.add("9TH");
-    ranks.add("10TH");
-    names.add("NAME");
-    names.add("PLAYER1");
-    names.add("AAAAAAA");
-    names.add("PLAYER1");
-    names.add("AAAAAAA");
-    names.add("PLAYER1");
-    names.add("AAAAAAA");
-    names.add("PLAYER1");
-    names.add("AAAAAAA");
-    names.add("PLAYER1");
-    names.add("AAAAAAA");
-    scores.add("SCORE");
-    scores.add("1200");
-    scores.add("0100");
-    scores.add("1200");
-    scores.add("0100");
-    scores.add("1200");
-    scores.add("0100");
-    scores.add("1200");
-    scores.add("0100");
-    scores.add("1200");
-    scores.add("0100");
-  }
-
-  public void setTitle(String gameLevel) {
-    this.title = gameLevel;
+  public void setGameLevel(String gameLevel) {
+    this.gameLevel = gameLevel;
   }
 
   public void init() {
-
+    initData();
     initListView(ranks, rankList);
     initListView(names, nameList);
     initListView(scores, scoreList);
+  }
+
+  private void initData() {
+    ranks.add("RANK");
+    names.add("NAME");
+    scores.add("SCORE");
+
+    ScoreboardReader scoreboardReader = new ScoreboardReader(gameLevel.toLowerCase() + ".txt");
+    scoreboardReader.read();
+    ranks.addAll(scoreboardReader.getRanks());
+    names.addAll(scoreboardReader.getNames());
+    scores.addAll(scoreboardReader.getScores());
   }
 
   private void initListView(List<String> stringList, ListView<String> listView) {
@@ -80,10 +56,8 @@ public class ScoreboardController {
     @Override
     protected void updateItem(String string, boolean empty) {
       super.updateItem(string, empty);
-      setText(null);
-      if (string != null && !empty) {
-        setText(string);
-      }
+      if (empty || string == null) setText(null);
+      else setText(string);
     }
   }
 }

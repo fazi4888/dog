@@ -77,16 +77,17 @@ public enum SceneSwitch {
     }
   }
 
-  public void showScoreboard() {
+  public void showScoreboard(String gameLevel) {
     try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(FileName.VIEW_SCOREBOARD));
       Pane root = loader.load();
       Stage scoreboardStage = new Stage();
       scoreboardStage.setScene(new Scene(root));
       scoreboardStage.setResizable(false);
+      scoreboardStage.setTitle("Scoreboard");
 
       ScoreboardController scoreboardController = loader.getController();
-      scoreboardController.setTitle("EASY");
+      scoreboardController.setGameLevel(gameLevel);
       scoreboardController.init();
       scoreboardStage.show();
     } catch (IOException e) {
