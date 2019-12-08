@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,8 +70,9 @@ public enum SceneSwitch {
       Pane root = loader.load();
       Stage helpStage = new Stage();
       helpStage.setScene(new Scene(root));
-      helpStage.setTitle("HELP");
+      helpStage.initOwner(Main.getPrimaryStage().getScene().getWindow());
       helpStage.setResizable(false);
+      helpStage.setTitle("HELP");
       helpStage.show();
     } catch (IOException e) {
       e.printStackTrace();
@@ -83,6 +85,7 @@ public enum SceneSwitch {
       Pane root = loader.load();
       Stage scoreboardStage = new Stage();
       scoreboardStage.setScene(new Scene(root));
+      scoreboardStage.initOwner(Main.getPrimaryStage().getScene().getWindow());
       scoreboardStage.setResizable(false);
       scoreboardStage.setTitle("Scoreboard");
 
