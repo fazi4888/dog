@@ -51,11 +51,12 @@ public enum SceneSwitch {
     root.getChildren().add(frog);
   }
 
-  public void switchToGame(GameMode gameMode, GameLevel gameLevel) {
+  public void switchToGame(GameMode gameMode, GameLevel gameLevel, String nicknameA, String nicknameB) {
     changeScene(FileName.VIEW_GAME);
 
     GameController gameController = loader.getController();
     Game game = new Game(gameController, gameMode, gameLevel, root);
+    game.setPlayerName(nicknameA, nicknameB);
     TouchHandler.INSTANCE.init(gameMode);
     game.startGame();
 
@@ -69,8 +70,9 @@ public enum SceneSwitch {
       Pane root = loader.load();
       Stage helpStage = new Stage();
       helpStage.setScene(new Scene(root));
-      helpStage.setTitle("HELP");
+      helpStage.initOwner(Main.getPrimaryStage().getScene().getWindow());
       helpStage.setResizable(false);
+      helpStage.setTitle("HELP");
       helpStage.show();
     } catch (IOException e) {
       e.printStackTrace();
@@ -83,8 +85,9 @@ public enum SceneSwitch {
       Pane root = loader.load();
       Stage scoreboardStage = new Stage();
       scoreboardStage.setScene(new Scene(root));
+      scoreboardStage.initOwner(Main.getPrimaryStage().getScene().getWindow());
       scoreboardStage.setResizable(false);
-      scoreboardStage.setTitle("Scoreboard");
+      scoreboardStage.setTitle("SCOREBOARD");
 
       ScoreboardController scoreboardController = loader.getController();
       scoreboardController.setGameLevel(gameLevel);

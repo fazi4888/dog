@@ -28,6 +28,7 @@ public class Frog extends Actor {
   private int score;
   private int life;
   private int touchedEndAmount;
+  private String nickname;
 
   public Frog(String imageLink, int xpos, int ypos) {
     super(imageLink, xpos, ypos, 50, 50);
@@ -52,6 +53,14 @@ public class Frog extends Actor {
     deathImgIndex = 0;
     hasJump = false;
     highestY = 965;
+  }
+
+  public void setNickname(String nickname) {
+    this.nickname = nickname;
+  }
+
+  public String getNickname() {
+    return nickname;
   }
 
   public void setDeath(Death death) {
