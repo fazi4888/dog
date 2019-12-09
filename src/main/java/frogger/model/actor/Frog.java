@@ -43,7 +43,7 @@ public class Frog extends Actor {
     rebirth();
   }
 
-  private void rebirth() {
+  public void rebirth() {
     System.out.println("current life: " + life + "; current score " + score);
     super.resetActor();
     setDeath(Death.NONE);
@@ -131,12 +131,7 @@ public class Frog extends Actor {
 
   @Override
   public void act(long now) {
-    checkMotionRange();
-    if (getDeath() != Death.NONE) showDeathFrames(now, getDeath());
-  }
-
-  private void checkMotionRange() {
-    if (getX() < 0 - movementX || getX() > 768 + movementX) setDeath(Death.OVERSCREEN);
+    if (death == Death.CAR || death == Death.WATER) showDeathFrames(now, getDeath());
   }
 
   public void touchEnd() {
@@ -156,11 +151,6 @@ public class Frog extends Actor {
 
   private void showDeathFrames(long now, Death death) {
     noMove = true;
-    if (death == Death.OVERSCREEN) {
-      loseLife();
-      rebirth();
-      return;
-    }
     ArrayList<Image> currentDeathImg = (death == Death.CAR) ? carDeath : waterDeath;
     if (deathImgIndex >= 0 && deathImgIndex < currentDeathImg.size()) {
       setImage(currentDeathImg.get(deathImgIndex));
