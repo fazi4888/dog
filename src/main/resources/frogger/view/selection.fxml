@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,13 +20,15 @@
                     <children>
                   <Button fx:id="level" mnemonicParsing="false" onAction="#switchLevel" prefWidth="400.0" styleClass="menu__item" text="&lt; EASY &gt;" textAlignment="CENTER" textFill="#60ff26" />
                   <Button fx:id="mode" mnemonicParsing="false" onAction="#switchMode" prefWidth="551.0" styleClass="menu__item" text="&lt; Single Mode &gt;" textAlignment="CENTER" textFill="#60ff26" />
+                  <TextField fx:id="nicknameA" alignment="CENTER" promptText="Enter Player A Name Here" />
+                  <TextField fx:id="nicknameB" alignment="CENTER" promptText="Enter Player B Name Here" />
                     </children>
                 </VBox>
             </center>
          <bottom>
             <Pane prefHeight="300.0" prefWidth="568.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="84.0" layoutY="50.0" mnemonicParsing="false" onAction="#startGame" prefWidth="400.0" text="START" textAlignment="CENTER" textFill="#ff2020">
+                  <Button layoutX="84.0" layoutY="62.0" mnemonicParsing="false" onAction="#startGame" prefWidth="400.0" text="START" textAlignment="CENTER" textFill="#ff2020">
                      <styleClass>
                         <String fx:value="menu__item" />
                         <String fx:value="menu__item--go" />

@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -52,11 +51,12 @@ public enum SceneSwitch {
     root.getChildren().add(frog);
   }
 
-  public void switchToGame(GameMode gameMode, GameLevel gameLevel) {
+  public void switchToGame(GameMode gameMode, GameLevel gameLevel, String nicknameA, String nicknameB) {
     changeScene(FileName.VIEW_GAME);
 
     GameController gameController = loader.getController();
     Game game = new Game(gameController, gameMode, gameLevel, root);
+    game.setPlayerName(nicknameA, nicknameB);
     TouchHandler.INSTANCE.init(gameMode);
     game.startGame();
 

@@ -34,6 +34,11 @@ public class Game {
     return world;
   }
 
+  public void setPlayerName(String nicknameA, String nicknameB) {
+    if (!nicknameA.equals("")) world.getFrogA().setNickname(nicknameA);
+    if (isDoubleMode() && !nicknameB.equals("")) world.getFrogB().setNickname(nicknameB);
+  }
+
   private AnimationTimer timer =
       new AnimationTimer() {
         @Override

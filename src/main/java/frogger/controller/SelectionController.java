@@ -6,20 +6,36 @@ import frogger.util.MusicPlayer;
 import frogger.util.SceneSwitch;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class SelectionController {
 
   @FXML private Button mode;
   @FXML private Button level;
 
-  @FXML private Button musicon;;
+  @FXML private TextField nicknameA;
+  @FXML private TextField nicknameB;
+
+  @FXML private Button musicon;
   @FXML private Button musicoff;
+
+  private int maxTextLength = 8;
 
   @FXML
   public void initialize() {
     updateMusicBtn();
+    initTextListener(nicknameA);
+    initTextListener(nicknameB);
     mode.setUserData(GameMode.SINGLE);
     level.setUserData(GameLevel.EASY);
+    hideTextFieldB();
+  }
+
+  private void initTextListener(TextField textField) {
+    textField.textProperty().addListener((obs, oldValue, newValue) -> {
+      if (newValue.matches("[a-zA-Z]{0,8}")) return;
+      textField.setText(newValue.substring(0, maxTextLength).replaceAll("[^a-zA-Z]", ""));
+    });
   }
 
   @FXML
@@ -27,10 +43,22 @@ public class SelectionController {
     if (mode.getUserData() == GameMode.SINGLE) {
       mode.setUserData(GameMode.DOUBLE);
       mode.setText("< Double Mode >");
+      showTextFieldB();
     } else {
       mode.setUserData(GameMode.SINGLE);
       mode.setText("< Single Mode >");
+      hideTextFieldB();
     }
+  }
+
+  private void showTextFieldB() {
+    nicknameB.setVisible(true);
+    nicknameB.setDisable(false);
+  }
+
+  private void hideTextFieldB() {
+    nicknameB.setVisible(false);
+    nicknameB.setDisable(true);
   }
 
   @FXML
@@ -53,8 +81,7 @@ public class SelectionController {
 
   @FXML
   public void startGame() {
-    SceneSwitch.INSTANCE.switchToGame(
-        (GameMode) mode.getUserData(), (GameLevel) level.getUserData());
+    SceneSwitch.INSTANCE.switchToGame((GameMode) mode.getUserData(), (GameLevel) level.getUserData(), nicknameA.getText(), nicknameB.getText());
   }
 
   @FXML

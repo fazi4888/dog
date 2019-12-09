@@ -53,9 +53,9 @@ public class WorldLoader {
 
   private void resetActor() {
     frogA.resetActor();
-    frogA.setId("frogA");
+    frogA.setNickname("Unknown");
     frogB.resetActor();
-    frogB.setId("frogB");
+    frogB.setNickname("Unknown");
     ends.forEach(End::resetActor);
     movableActors.forEach(AutomaticActor::resetActor);
   }
