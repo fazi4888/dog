@@ -87,7 +87,7 @@ public enum SceneSwitch {
       scoreboardStage.setScene(new Scene(root));
       scoreboardStage.initOwner(Main.getPrimaryStage().getScene().getWindow());
       scoreboardStage.setResizable(false);
-      scoreboardStage.setTitle("Scoreboard");
+      scoreboardStage.setTitle("SCOREBOARD");
 
       ScoreboardController scoreboardController = loader.getController();
       scoreboardController.setGameLevel(gameLevel);
