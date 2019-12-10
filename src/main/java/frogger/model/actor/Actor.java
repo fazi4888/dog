@@ -23,13 +23,5 @@ public abstract class Actor extends ImageView {
     setY(getY() + dy);
   }
 
-  public double getWidth() {
-    return this.getBoundsInLocal().getWidth();
-  }
-
-  public double getHeight() {
-    return this.getBoundsInLocal().getHeight();
-  }
-
   public abstract void act(long now);
 }

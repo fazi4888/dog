@@ -27,7 +27,7 @@ public abstract class AutomaticActor extends Actor {
   }
 
   private void resetPos() {
-    if (getX() > 768 && speed > 0) setX(edgeRight);
-    if (getX() < edgeLeft && speed < 0) setX(768);
+    if (getX() > 576 && speed > 0) setX(edgeRight);
+    if (getX() < edgeLeft && speed < 0) setX(576);
   }
 }

@@ -17,7 +17,7 @@ public enum TouchChecker {
   }
 
   private void overScreen(Frog frog) {
-    if (frog.getX() < -30 || frog.getX() > 800) TouchHandler.INSTANCE.overScreen(frog);
+    if (frog.getX() < -30 || frog.getX() > 590) TouchHandler.INSTANCE.overScreen(frog);
   }
 
   private void touchEnd(Frog frog, ArrayList<End> ends) {
@@ -52,6 +52,6 @@ public enum TouchChecker {
   }
 
   private boolean touchWater(Frog frog) {
-    return frog.getY() < 520;
+    return frog.getY() < 380;
   }
 }
