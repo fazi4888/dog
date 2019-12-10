@@ -12,7 +12,7 @@
 
 ## Prerequisite
 
-- Java 12 or later
+- Java 10 or later
 - Maven
 
 ## Build & Run
@@ -21,14 +21,14 @@ To launch the app use the following command:
 
 ```
 mvn clean compile package exec:java
-```
+``` 
 
 The following dependencies will be downloaded:
 
-- javafx-controls 12.0.2 (org.openjfx)
-- javafx-fxml 12.0.2 (org.openjfx)
-- javafx-graphics 12.0.2 (org.openjfx)
-- javafx-media 12.0.2 (org.openjfx)
+- javafx-controls 11.0.2 (org.openjfx)
+- javafx-fxml 11.0.2 (org.openjfx)
+- javafx-graphics 11.0.2 (org.openjfx)
+- javafx-media 11.0.2 (org.openjfx)
 - commens-io 2.6 (commons-io)
 
 ## Source File Structure
@@ -88,7 +88,7 @@ From the directory tree above,
 
 ### 2-Player Mode
 
-A part of what I'm so proud of and also brought me some trouble.
+A part of what I'm so proud of but also brought me some trouble.
 
 In the old version, the handling of keyboard events was put in `Animal` which leads to a problem that two frogs should not use one set of operators. (i.e. When user presses a key, two frogs should not jump together.)
 
@@ -106,14 +106,14 @@ To solve this problem, I move the code for handling keyboard events to `World` a
 
 In fact, there are only three frogs in the game no matter how many games are created. One for the animation and two for the game. 
 
-All actors are stored in `PreloadedActor`. When a user starts a new game, `WorldLoader` simply takes actors out, resets them and draw them on the pane.
+The reason is that all actors are stored in `PreloadedActor`. When a user starts a new game, `WorldLoader` simply takes actors out, resets them and draw them on the pane. No new frog is created.
 
 ### Limit User Input
 
-The maxlength of player's name is 8 and letters only.
+The player's name has a limitation of 8 characters and letters only.
 
 ## Finally
 
-I spent at least 100 hours on this project. Because of time, here are still some features that have not been added. But I do have tried my best.
+I spent at least 100 hours on this project and I did try my best. Because of time, there are still some features that have not been added.
 
 Thanks to my boyfriend for giving me the inspiration of 2-player mode and I beat him in the game :)
