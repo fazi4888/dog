@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/help.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/help.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text fill="#52cc3c" layoutX="118.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="H E L P" textAlignment="CENTER" />
       <Text fill="WHITE" layoutX="26.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="mode__title" text="Single Mode / Double Mode" />
