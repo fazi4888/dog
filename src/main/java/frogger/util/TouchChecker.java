@@ -11,8 +11,13 @@ public enum TouchChecker {
 
   public void touchActor(Frog frog, ArrayList<AutomaticActor> automaticActors, ArrayList<End> ends) {
     if (frog.getDeath() != Death.NONE) return;
+    overScreen(frog);
     touchEnd(frog, ends);
     touchAutoActor(frog, automaticActors);
+  }
+
+  private void overScreen(Frog frog) {
+    if (frog.getX() < -30 || frog.getX() > 590) TouchHandler.INSTANCE.overScreen(frog);
   }
 
   private void touchEnd(Frog frog, ArrayList<End> ends) {
@@ -47,6 +52,6 @@ public enum TouchChecker {
   }
 
   private boolean touchWater(Frog frog) {
-    return frog.getY() < 520;
+    return frog.getY() < 380;
   }
 }

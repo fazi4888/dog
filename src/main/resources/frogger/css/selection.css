@@ -14,14 +14,14 @@
 .menu__item {
     -fx-background-color: rgba(0, 0, 0, 0);
     -fx-font-family: 'Retro Gaming';
-    -fx-font-size: 34px;
-    -fx-opacity: 0.85;
-    -fx-padding: 40px;
+    -fx-font-size: 30px;
+    -fx-opacity: 0.8;
+    -fx-padding: 20px;
     -fx-effect: dropshadow(three-pass-box, #444444, 15, 0, 0, 0);
 }
 
 .menu__item--go {
-    -fx-font-size: 40px;
+    -fx-font-size: 36px;
 }
 
 .menu__item:hover {
@@ -31,6 +31,6 @@
 .text-field {
     -fx-background-color: transparent;
     -fx-text-fill: white;
-    -fx-font-size: 22px;
+    -fx-font-size: 19px;
     -fx-font-family: 'Retro Gaming';
 }

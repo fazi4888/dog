@@ -33,8 +33,12 @@ public class SelectionController {
 
   private void initTextListener(TextField textField) {
     textField.textProperty().addListener((obs, oldValue, newValue) -> {
-      if (newValue.matches("[a-zA-Z]{0,8}")) return;
-      textField.setText(newValue.substring(0, maxTextLength).replaceAll("[^a-zA-Z]", ""));
+      String temp = newValue;
+      temp = temp.replaceAll("[^a-zA-Z]", "");
+      if (temp.length() > maxTextLength) {
+        temp = temp.substring(0, maxTextLength);
+      }
+      textField.setText(temp);
     });
   }
 
@@ -42,11 +46,11 @@ public class SelectionController {
   public void switchMode() {
     if (mode.getUserData() == GameMode.SINGLE) {
       mode.setUserData(GameMode.DOUBLE);
-      mode.setText("< Double Mode >");
+      mode.setText("< DOUBLE MODE >");
       showTextFieldB();
     } else {
       mode.setUserData(GameMode.SINGLE);
-      mode.setText("< Single Mode >");
+      mode.setText("< SINGLE MODE >");
       hideTextFieldB();
     }
   }

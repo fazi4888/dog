@@ -11,9 +11,9 @@ public class End extends AutomaticActor {
   private Image endWithFrog;
 
   public End(int xpos, int ypos) {
-    super(FileName.IMAGE_END, xpos, ypos, 74, 74, 0);
-    endWithoutFrog = new Image(FileName.IMAGE_END, 74, 74, true, true);
-    endWithFrog = new Image(FileName.IMAGE_END_FROG, 74, 74, true, true);
+    super(FileName.IMAGE_END, xpos, ypos, 56, 56, 0);
+    endWithoutFrog = new Image(FileName.IMAGE_END, 56, 56, true, true);
+    endWithFrog = new Image(FileName.IMAGE_END_FROG, 56, 56, true, true);
   }
 
   @Override

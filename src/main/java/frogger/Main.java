@@ -23,7 +23,7 @@ public class Main extends Application {
     primaryStage.setTitle("Frogger");
     primaryStage.setResizable(false);
 
-//    MusicPlayer.INSTANCE.playMusic();
+    MusicPlayer.INSTANCE.playMusic();
     SceneSwitch.INSTANCE.switchToHome();
   }
 }

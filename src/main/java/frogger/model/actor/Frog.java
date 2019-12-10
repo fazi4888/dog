@@ -14,8 +14,8 @@ public class Frog extends Actor {
   private ArrayList<Image> carDeath;
   private ArrayList<Image> waterDeath;
 
-  private int size = 50;
-  private double movementY = 34;
+  private int size = 40;
+  private double movementY = 25.4;
   private double movementX = 20;
 
   private boolean isJumping;
@@ -31,7 +31,7 @@ public class Frog extends Actor {
   private String nickname;
 
   public Frog(String imageLink, int xpos, int ypos) {
-    super(imageLink, xpos, ypos, 50, 50);
+    super(imageLink, xpos, ypos, 40, 40);
     initStateImages();
   }
 
@@ -43,7 +43,7 @@ public class Frog extends Actor {
     rebirth();
   }
 
-  private void rebirth() {
+  public void rebirth() {
     System.out.println("current life: " + life + "; current score " + score);
     super.resetActor();
     setDeath(Death.NONE);
@@ -108,7 +108,7 @@ public class Frog extends Actor {
         setImage((isJumping) ? moveImg.get(1) : moveImgJump.get(1));
         break;
       case DOWN:
-        if (getY() + movementY < 980) {
+        if (getY() + movementY < 745) {
           move(0, movementY);
           setImage((isJumping) ? moveImg.get(2) : moveImgJump.get(2));
         }
@@ -131,7 +131,7 @@ public class Frog extends Actor {
 
   @Override
   public void act(long now) {
-    if (getDeath() != Death.NONE) showDeathFrames(now, getDeath());
+    if (death == Death.CAR || death == Death.WATER) showDeathFrames(now, getDeath());
   }
 
   public void touchEnd() {

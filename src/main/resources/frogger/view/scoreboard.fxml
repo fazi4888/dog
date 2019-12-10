@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" styleClass="root" stylesheets="@../css/scoreboard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.ScoreboardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="450.0" styleClass="root" stylesheets="@../css/scoreboard.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.ScoreboardController">
    <top>
       <Pane prefHeight="80.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#60f7f1" layoutX="80.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="HIGH SCORES" textAlignment="CENTER" />
+            <Text fill="#60f7f1" layoutX="88.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="HIGH SCORES" textAlignment="CENTER" />
          </children>
       </Pane>
    </top>
@@ -22,8 +22,8 @@
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin></ListView>
-            <ListView fx:id="nameList" prefHeight="420.0" prefWidth="140.0" styleClass="name" />
-            <ListView fx:id="scoreList" prefHeight="420.0" prefWidth="140.0" styleClass="score">
+            <ListView fx:id="nameList" prefHeight="420.0" prefWidth="175.0" styleClass="name" />
+            <ListView fx:id="scoreList" prefHeight="420.0" prefWidth="155.0" styleClass="score">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin></ListView>

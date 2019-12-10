@@ -9,7 +9,7 @@
 
 .score {
     -fx-font-family: 'Retro Gaming';
-    -fx-font-size: 22px;
+    -fx-font-size: 18px;
 }
 
 .content {
@@ -20,11 +20,11 @@
     -fx-alignment: center;
     -fx-background-color: black;
     -fx-font-family: 'Retro Gaming';
-    -fx-font-size: 22px;
+    -fx-font-size: 18px;
 }
 
 .backToHome {
     -fx-background-color: rgba(255, 255, 255, 0);
     -fx-font-family: 'Retro Gaming';
-    -fx-font-size: 22px;
+    -fx-font-size: 18px;
 }

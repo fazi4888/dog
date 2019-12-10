@@ -32,6 +32,12 @@ public enum TouchHandler {
     }
   }
 
+  public void overScreen(Frog frog) {
+    frog.setDeath(Death.OVERSCREEN);
+    frog.loseLife();
+    frog.rebirth();
+  }
+
   public void touchLog(Frog frog, Log log) {
     frog.touchLogOrTurtle(log.getSpeed());
   }
