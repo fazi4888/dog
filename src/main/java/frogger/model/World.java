@@ -41,6 +41,7 @@ public class World {
 
   public void run(long now) {
     for (AutomaticActor automaticActor : automaticActors) automaticActor.act(now);
+    for (End end : ends) end.act(now);
     frogA.act(now);
     TouchChecker.INSTANCE.touchActor(frogA, automaticActors, ends);
     if (frogB != null) {

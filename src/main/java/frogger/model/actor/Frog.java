@@ -134,6 +134,11 @@ public class Frog extends Actor {
     if (death == Death.CAR || death == Death.WATER) showDeathFrames(now, getDeath());
   }
 
+  public void touchFlyEnd() {
+    gainScore(200);
+    touchEnd();
+  }
+
   public void touchEnd() {
     gainScore(200);
     noMove = true;
