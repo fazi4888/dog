@@ -5,17 +5,30 @@ import frogger.util.SceneSwitch;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/** The {@code Main} class of the application. */
 public class Main extends Application {
+
+  /** The primary stage of the application. */
   private static Stage primaryStage;
 
   public static void main(String[] args) {
     launch(args);
   }
 
+  /**
+   * Returns the primary stage of the application.
+   *
+   * @return the primary stage of the application
+   */
   public static Stage getPrimaryStage() {
     return primaryStage;
   }
 
+  /**
+   * The main entry point for the application.
+   *
+   * @param primaryStage the primary stage
+   */
   @Override
   public void start(Stage primaryStage) {
     this.primaryStage = primaryStage;

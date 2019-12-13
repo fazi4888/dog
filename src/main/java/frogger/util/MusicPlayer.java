@@ -8,18 +8,32 @@ import java.util.Objects;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * The {@code MusicPlayer} class is a utility to {@link #playMusic()} or {@link #stopMusic()}.
+ *
+ * <p><b>Note:</b> this class is a singleton with {@link Enum}.
+ */
 public enum MusicPlayer {
   INSTANCE;
 
+  /** The {@link MediaPlayer} for background music. */
   private MediaPlayer mediaPlayer;
+  /** Is the background music on. */
   private boolean isOn;
 
+  /**
+   * Returns is the background music on.
+   *
+   * @return {@code true} if the background music is on; {@code false} otherwise.
+   */
   public boolean isOn() {
     return isOn;
   }
 
+  /** Plays the background music. */
   public void playMusic() {
-    URL resource = getClass().getClassLoader().getResource("frogger/music/Frogger Main Song Theme (loop).mp3");
+    ClassLoader classLoader = getClass().getClassLoader();
+    URL resource = classLoader.getResource("frogger/music/Frogger Main Song Theme (loop).mp3");
     String path = null;
     try {
       path = Objects.requireNonNull(resource).toURI().getPath();
@@ -33,6 +47,7 @@ public enum MusicPlayer {
     isOn = true;
   }
 
+  /** Stops the background music. */
   public void stopMusic() {
     mediaPlayer.stop();
     isOn = false;
