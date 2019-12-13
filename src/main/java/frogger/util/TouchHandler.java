@@ -19,8 +19,9 @@ public enum TouchHandler {
 
   public void touchEnd(Frog frog, End end) {
     if (!end.isActivated()) {
-      frog.touchEnd();
-      end.setEnd();
+      if (end.isFlyInThisEnd()) frog.touchFlyEnd();
+      else frog.touchEnd();
+      end.setFrog();
       activatedEnds.add(end);
       if (activatedEnds.size() == 5) touchAllEnd();
     }
