@@ -12,8 +12,11 @@ import java.util.List;
 
 public class ScoreboardController {
 
+  /** The list of abbreviations of ranks. */
   @FXML private ListView<String> rankList;
+  /** The list of top 10 players' name. */
   @FXML private ListView<String> nameList;
+  /** The list of top 10 players' score. */
   @FXML private ListView<String> scoreList;
 
   private List<String> ranks = new ArrayList<>();

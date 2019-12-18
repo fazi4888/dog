@@ -5,7 +5,8 @@ import frogger.model.actor.*;
 import java.util.ArrayList;
 
 /**
- * The {@code PreloadedActor} is a singleton
+ * The {@code PreloadedActor} is an object to store two frogs, ends and other actors in different
+ * game level.
  */
 public class PreloadedActor {
 

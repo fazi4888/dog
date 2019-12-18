@@ -134,11 +134,21 @@ public class Frog extends Actor {
     if (death == Death.CAR || death == Death.WATER) showDeathFrames(now, getDeath());
   }
 
+  /**
+   * Called whe the frog touch an end with a fly.
+   *
+   * <p>The plyer represented by the frog will gain extra 200 pt.
+   */
   public void touchFlyEnd() {
     gainScore(200);
     touchEnd();
   }
 
+  /**
+   * Called when the frog touch an end.
+   *
+   * <p>The player represented by the frog will gain 200 pt.
+   */
   public void touchEnd() {
     gainScore(200);
     noMove = true;
@@ -149,6 +159,14 @@ public class Frog extends Actor {
     rebirth();
   }
 
+  /**
+   * Called when the frog touch a log or turtle.
+   *
+   * <p>The frog will move according to the speed of the log or turtle.
+   *
+   * @param speed the speed of the log or turtle.
+   * @see frogger.util.TouchHandler
+   */
   public void touchLogOrTurtle(double speed) {
     if (death != Death.NONE) return;
     move(speed, 0);
