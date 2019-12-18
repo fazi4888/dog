@@ -83,8 +83,7 @@ public enum SceneSwitch {
    * @param nicknameB the nickname of player B
    * @see SelectionController#startGame()
    */
-  public void switchToGame(
-      GameMode gameMode, GameLevel gameLevel, String nicknameA, String nicknameB) {
+  public void switchToGame(GameMode gameMode, GameLevel gameLevel, String nicknameA, String nicknameB) {
     changeScene(FileName.VIEW_GAME);
 
     // initialize the game

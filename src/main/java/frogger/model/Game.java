@@ -12,12 +12,24 @@ import javafx.scene.layout.Pane;
 
 public class Game {
 
+  /** The {@link World} of the game. */
   private World world;
-
+  /** The {@link GameController} of the game view. */
   private GameController gameController;
+  /** The {@link GameMode} of the game. */
   private GameMode gameMode;
+  /** The {@link GameLevel} of the game. */
   private GameLevel gameLevel;
 
+  /**
+   * Constructs a new {@code Game} with the specified parameters and creates a new {@link World} of
+   * the game.
+   *
+   * @param gameController the {@link GameController} of the game view
+   * @param gameMode the {@link GameMode} of the game
+   * @param gameLevel the {@link GameLevel} of the game
+   * @param root the {@link Pane} that is expected to be drawn
+   */
   public Game(GameController gameController, GameMode gameMode, GameLevel gameLevel, Pane root) {
     this.gameController = gameController;
     this.gameMode = gameMode;
@@ -26,14 +38,27 @@ public class Game {
     initGameScreen();
   }
 
+  /** Hides the information of player B if the game mode is single. */
   private void initGameScreen() {
     if (!isDoubleMode()) gameController.hidePlayerBInfo();
   }
 
+  /**
+   * Returns the world of the game.
+   *
+   * @return the {@code World} of the game
+   */
   public World getWorld() {
     return world;
   }
 
+  /**
+   * Sets the nickname of players.
+   *
+   * @param nicknameA the nickname of the player A
+   * @param nicknameB the nickname of the player B
+   * @see SceneSwitch#switchToGame(GameMode, GameLevel, String, String)
+   */
   public void setPlayerName(String nicknameA, String nicknameB) {
     if (!nicknameA.equals("")) world.getFrogA().setNickname(nicknameA);
     if (isDoubleMode() && !nicknameB.equals("")) world.getFrogB().setNickname(nicknameB);
@@ -50,10 +75,18 @@ public class Game {
         }
       };
 
+  /** Starts the game. */
   public void startGame() {
     timer.start();
   }
 
+  /**
+   * Ends the game and updates the prompt on the screen. If the game mode is {@code DOUBLE}, a
+   * scoreboard will be popped up.
+   *
+   * @see #generatePrompt()
+   * @see SceneSwitch#showScoreboard(String)
+   */
   private void endGame() {
     timer.stop();
     if (!isDoubleMode()) {
@@ -72,6 +105,11 @@ public class Game {
     scoreboardWriter.write(nickname + ";" + score + "\n");
   }
 
+  /**
+   * Generates the prompt according to the game mode and the score of two players.
+   *
+   * @return the prompt be generated
+   */
   private String generatePrompt() {
     String prompt;
     if (!isDoubleMode()) {
@@ -91,12 +129,22 @@ public class Game {
     return prompt;
   }
 
+  /**
+   * Updates the score of players.
+   *
+   * @see GameController#updateScore(int, int)
+   */
   private void updateScore() {
     int scoreA = world.getFrogA().getScore();
     int scoreB = isDoubleMode() ? world.getFrogB().getScore() : 0;
     gameController.updateScore(scoreA, scoreB);
   }
 
+  /**
+   * Updates the life of players.
+   *
+   * @see GameController#updateLife(int, int)
+   */
   private void updateLife() {
     int lifeA = world.getFrogA().getLife();
     int lifeB = isDoubleMode() ? world.getFrogB().getLife() : 0;
@@ -122,6 +170,7 @@ public class Game {
     return false;
   }
 
+  /** @return {@code true} if the game mode is {@link GameMode#DOUBLE}, {@code false} otherwise. */
   private boolean isDoubleMode() {
     return gameMode == GameMode.DOUBLE;
   }

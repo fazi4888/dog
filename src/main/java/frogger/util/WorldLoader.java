@@ -35,18 +35,18 @@ public class WorldLoader {
   }
 
   private void readActor() {
-    frogA = PreloadedActor.INSTANCE.frogA;
-    frogB = PreloadedActor.INSTANCE.frogB;
-    ends = PreloadedActor.INSTANCE.ends;
+    frogA = PreloadedActor.frogA;
+    frogB = PreloadedActor.frogB;
+    ends = PreloadedActor.ends;
     switch (gameLevel) {
       case EASY:
-        movableActors = PreloadedActor.INSTANCE.easyAutoActors;
+        movableActors = PreloadedActor.easyAutoActors;
         break;
       case MEDIUM:
-        movableActors = PreloadedActor.INSTANCE.mediumAutoActors;
+        movableActors = PreloadedActor.mediumAutoActors;
         break;
       case HARD:
-        movableActors = PreloadedActor.INSTANCE.hardAutoActors;
+        movableActors = PreloadedActor.hardAutoActors;
         break;
     }
   }

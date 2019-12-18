@@ -13,6 +13,10 @@ import javafx.scene.input.KeyEvent;
 import java.util.ArrayList;
 import java.util.Map;
 
+
+/**
+ * The {@code World} class is the
+ */
 public class World {
 
   private Frog frogA;

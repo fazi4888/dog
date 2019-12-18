@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+
+/**
+ * The {@code ScoreboardReader} is a utility to read the scoreboard file of each level.
+ */
 public class ScoreboardReader {
 
   private String fileName;
