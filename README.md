@@ -5,17 +5,18 @@
 ## Table of Contents
 
 - [Prerequisite](#prerequisite)
-- [Build & Run](#build-&-run)
+- [Build And Run](#build-and-run)
 - [Source File Structure](#source-file-structure)
-- [Work For Maintenance & Extension](#work-for-maintenance-&-extension)
+- [Work For Maintenance And Extension](#work-for-maintenance-and-extension)
 - [Other Details](#other-details)
+- [Finally](#finally)
 
 ## Prerequisite
 
 - Java 10 or later
 - Maven
 
-## Build & Run
+## Build And Run
 
 Tested on:
 
@@ -40,39 +41,37 @@ The following dependencies will be downloaded:
 
 ```
 src
-├── main
-│  ├── java
-│  │  └── frogger
-│  │      ├── constant
-│  │      ├── controller
-│  │      ├── model
-│  │      │  └── actor
-│  │      └── util
-│  └── resources
-│      └── frogger
-│          ├── css
-│          ├── font
-│          ├── image
-│          │  ├── car
-│          │  ├── death
-│          │  ├── end
-│          │  ├── frog
-│          │  ├── home
-│          │  ├── log
-│          │  └── turtle
-│          ├── music
-│          └── view
-└── test
-​    └── java
+└── main
+   ├── java
+   │  └── frogger
+   │      ├── constant
+   │      ├── controller
+   │      ├── model
+   │      │  └── actor
+   │      └── util
+   └── resources
+       └── frogger
+           ├── css
+           ├── font
+           ├── image
+           │  ├── car
+           │  ├── death
+           │  ├── end
+           │  ├── frog
+           │  ├── home
+           │  ├── log
+           │  └── turtle
+           ├── music
+           └── view
 ```
 
-## Work For Maintenance & Extension
+## Work For Maintenance And Extension
 
 Overall, the original file structure was very messy. I tried to decouple it by putting classes into different packages, extracting the parent classes and creating interfaces. I also added some new content (such as 2-player mode).
 
 ### Categorize The Resources
 
-At the beginning, there are so many images and all in one folder. I move them to the corresponding sub-folders.
+At the beginning, there are so many images and all in one folder. I moved them to the corresponding sub-folders.
 
 ### Use MVC Pattern
 
@@ -92,11 +91,11 @@ Try to prevent undefined constants from appearing directly in the code, package 
 
 However, there are still some magic number :-(
 
-### Add Abstract Class `AutomaticActor` 
+### Abstract Class `AutomaticActor` 
 
 `AutomaticActor` is a `Actor` which is not controlled by the user.
 
-This abstract class defines some methods, such as  automatic horizontal movement, which increase the reusability of the code.
+This abstract class defines some methods, such as automatic horizontal movement, which increase the reusability of the code.
 
 ### 2-Player Mode
 
@@ -104,7 +103,7 @@ A part of what I'm so proud of but also brought me some trouble.
 
 In the old version, the handling of keyboard events was put in `Animal` which leads to a problem that two frogs should not use one set of operators. (i.e. When user presses a key, two frogs should not jump together.)
 
-To solve this problem, I move the code for handling keyboard events to `World` and two sets of operators in `Operation` are used to judging the jump direction. Now frog just needs to know which direction to jump.
+To solve this problem, I moved the code for handling keyboard events to `World` and two sets of operators in `Operation` are used to judging the jump direction. Now frog just needs to know which direction to jump.
 
 ### Different Levels
 
@@ -114,7 +113,7 @@ The game has three levels of difficulty, but I can't beat the hard level :p
 
 ### Something For Fun
 
-`HomeAnimation` added a jumping frog on the start and selection screen.
+`HomeAnimation` adds a jumping frog on the start and selection screen.
 
 ### WorldLoader & PreloadedActor
 
