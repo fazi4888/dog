@@ -26,7 +26,7 @@ Build script:
 
 ```
 mvn clean compile package exec:java
-``` 
+```
 
 The following dependencies will be downloaded:
 
@@ -64,10 +64,11 @@ src
 │          └── view
 └── test
 ​    └── java
-​        └── frogger
 ```
 
 ## Work For Maintenance & Extension
+
+Overall, the original file structure was very messy. I tried to decouple it by putting classes into different packages, extracting the parent classes and creating interfaces. I also added some new content (such as 2-player mode).
 
 ### Categorize The Resources
 
@@ -75,21 +76,27 @@ At the beginning, there are so many images and all in one folder. I move them to
 
 ### Use MVC Pattern
 
-From the directory tree above,
+From the directory tree above, it can be seen MVC pattern is used to seperate the components of the application.
 
 ### Use Singleton Pattern
 
-#### `SceneSwitch`
+- `SceneSwitch`
 
-#### `TouchChecker` & `TouchHandler`
+- `TouchChecker` & `TouchHandler`
 
-#### `MusicPlayer`
+- `MusicPlayer`
 
 ### Package `constant`
 
-### Add Abstract Class `AutomaticActor` & Interface `Transformable`
+Try to prevent undefined constants from appearing directly in the code, package `constant` is used to warp these constants in, such like different types of death, the game mode and game level.
 
-### Add Class `Game`
+However, there are still some magic number :-(
+
+### Add Abstract Class `AutomaticActor` 
+
+`AutomaticActor` is a `Actor` which is not controlled by the user.
+
+This abstract class defines some methods, such as  automatic horizontal movement, which increase the reusability of the code.
 
 ### 2-Player Mode
 
@@ -99,9 +106,11 @@ In the old version, the handling of keyboard events was put in `Animal` which le
 
 To solve this problem, I move the code for handling keyboard events to `World` and two sets of operators in `Operation` are used to judging the jump direction. Now frog just needs to know which direction to jump.
 
-## Other Details
+### Different Levels
 
-### Scoreboard
+The game has three levels of difficulty, but I can't beat the hard level :p
+
+## Other Details
 
 ### Something For Fun
 
@@ -117,8 +126,13 @@ The reason is that all actors are stored in `PreloadedActor`. When a user starts
 
 The player's name has a limitation of 8 characters and letters only.
 
+### Fly In The End
+
+There will be a fly appears in ends randomly~
+
 ## Finally
 
-I have spent at least 100 hours on this project and I have tried my best. Because of time, there are still some features that have not been added.
+I have spent ~150 hours on this project and I have tried my best.
 
-Thanks to my boyfriend for giving me the inspiration of 2-player mode and I beat him in the game :)
+Thanks to my boyfriend for giving me the inspiration of 2-player mode and I beat him in the game :-)
+
