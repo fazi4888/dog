@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+/** The {@code SelectionController} is a controller for the selection view. */
 public class SelectionController {
 
   @FXML private Button mode;
@@ -21,6 +22,7 @@ public class SelectionController {
 
   private int maxTextLength = 8;
 
+  /** Initializes the UI. */
   @FXML
   public void initialize() {
     updateMusicBtn();
@@ -31,6 +33,11 @@ public class SelectionController {
     hideTextFieldB();
   }
 
+  /**
+   * Adds a limitation to the text field. i.e. max 8 characters and letter only.
+   *
+   * @param textField the text filed need to be listened
+   */
   private void initTextListener(TextField textField) {
     textField.textProperty().addListener((obs, oldValue, newValue) -> {
       String temp = newValue;
@@ -42,6 +49,7 @@ public class SelectionController {
     });
   }
 
+  /** Called when the players clicks the game model. */
   @FXML
   public void switchMode() {
     if (mode.getUserData() == GameMode.SINGLE) {
@@ -55,16 +63,27 @@ public class SelectionController {
     }
   }
 
+  /**
+   * Called when the game mode is double.
+   *
+   * <p>Shows the text field of nickname of player B.
+   */
   private void showTextFieldB() {
     nicknameB.setVisible(true);
     nicknameB.setDisable(false);
   }
 
+  /**
+   * Called when the game mode is single.
+   *
+   * <p>Hides the text field of nickname of player B.
+   */
   private void hideTextFieldB() {
     nicknameB.setVisible(false);
     nicknameB.setDisable(true);
   }
 
+  /** Called when player clicks the game level. */
   @FXML
   public void switchLevel() {
     switch ((GameLevel) level.getUserData()) {
@@ -83,11 +102,17 @@ public class SelectionController {
     }
   }
 
+  /** Starts the game. */
   @FXML
   public void startGame() {
-    SceneSwitch.INSTANCE.switchToGame((GameMode) mode.getUserData(), (GameLevel) level.getUserData(), nicknameA.getText(), nicknameB.getText());
+    SceneSwitch.INSTANCE.switchToGame(
+        (GameMode) mode.getUserData(),
+        (GameLevel) level.getUserData(),
+        nicknameA.getText(),
+        nicknameB.getText());
   }
 
+  /** Switches music state. */
   @FXML
   public void switchMusicState() {
     if (MusicPlayer.INSTANCE.isOn()) {
@@ -98,6 +123,7 @@ public class SelectionController {
     updateMusicBtn();
   }
 
+  /** Updates the music button. */
   private void updateMusicBtn() {
     if (MusicPlayer.INSTANCE.isOn()) {
       musicon.setStyle("-fx-opacity: 1");

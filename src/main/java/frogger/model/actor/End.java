@@ -3,6 +3,9 @@ package frogger.model.actor;
 import frogger.constant.FileName;
 import javafx.scene.image.Image;
 
+/**
+ * A {@code End} is a home of the {@link Frog} in the game.
+ */
 public class End extends AutomaticActor {
 
   /** Is there a fly among the five ends. */

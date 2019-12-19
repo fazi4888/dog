@@ -13,9 +13,10 @@ import javafx.scene.input.KeyEvent;
 import java.util.ArrayList;
 import java.util.Map;
 
-
 /**
- * The {@code World} class is the
+ * The {@code World} is an object consisting of different actors.
+ *
+ * @see Game
  */
 public class World {
 
@@ -24,6 +25,12 @@ public class World {
   private ArrayList<AutomaticActor> automaticActors;
   private ArrayList<End> ends;
 
+  /**
+   * Constructs a new World by a WorldLoader.
+   *
+   * @param worldLoader the loader of the world
+   * @see WorldLoader
+   */
   public World(WorldLoader worldLoader) {
     frogA = worldLoader.getFrogA();
     frogB = worldLoader.getFrogB();
@@ -54,10 +61,22 @@ public class World {
     }
   }
 
+  /**
+   * Handler of key pressed event.
+   *
+   * @param event key pressed event
+   * @see #judgeFrogJump(KeyEvent, boolean)
+   */
   public void keyPressed(KeyEvent event) {
     judgeFrogJump(event, true);
   }
 
+  /**
+   * Handler of key released event.
+   *
+   * @param event key released event.
+   * @see #judgeFrogJump(KeyEvent, boolean)
+   */
   public void keyReleased(KeyEvent event) {
     judgeFrogJump(event, false);
   }
@@ -67,7 +86,8 @@ public class World {
     if (frogB != null) judgeJumpDirection(frogB, isMoving, Operation.DIRECTION_B, event.getCode());
   }
 
-  private void judgeJumpDirection(Frog frog, boolean isMoving, Map<KeyCode, Direction> directions, KeyCode code) {
+  private void judgeJumpDirection(
+      Frog frog, boolean isMoving, Map<KeyCode, Direction> directions, KeyCode code) {
     if (!directions.containsKey(code)) return;
     frog.jump(directions.get(code), isMoving);
   }

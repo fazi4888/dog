@@ -10,6 +10,11 @@ import frogger.util.WorldLoader;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 
+/**
+ * A {@code Game} will be created when the player starts a new game.
+ *
+ * @see SceneSwitch#switchToGame(GameMode, GameLevel, String nicknameA, String nicknameB)
+ */
 public class Game {
 
   /** The {@link World} of the game. */
@@ -43,11 +48,6 @@ public class Game {
     if (!isDoubleMode()) gameController.hidePlayerBInfo();
   }
 
-  /**
-   * Returns the world of the game.
-   *
-   * @return the {@code World} of the game
-   */
   public World getWorld() {
     return world;
   }
@@ -64,6 +64,11 @@ public class Game {
     if (isDoubleMode() && !nicknameB.equals("")) world.getFrogB().setNickname(nicknameB);
   }
 
+  /**
+   * AnimationTimer for the game.
+   *
+   * <p>It will update the score and life of players and check if game is over.
+   */
   private AnimationTimer timer =
       new AnimationTimer() {
         @Override
@@ -97,6 +102,11 @@ public class Game {
     gameController.updateBackBtn();
   }
 
+  /**
+   * Write the player's info to the scoreboard file.
+   *
+   * @see ScoreboardWriter
+   */
   private void recordScore() {
     String nickname = getWorld().getFrogA().getNickname();
     String score = String.format("%04d", getWorld().getFrogA().getScore());
@@ -151,6 +161,11 @@ public class Game {
     gameController.updateLife(lifeA, lifeB);
   }
 
+  /**
+   * Check if the player is win
+   *
+   * @return {@code true} if in single mode, the frog touches all ends, {@code false} otherwise
+   */
   private boolean checkWin() {
     if (!isDoubleMode()) {
       for (End end : world.getEnds()) {
@@ -160,6 +175,11 @@ public class Game {
     } else return false;
   }
 
+  /**
+   * Check if the player has lose all life.
+   *
+   * @return {@code true} if all players lose all life, {@code false} otherwise
+   */
   private boolean checkLose() {
     switch (gameMode) {
       case SINGLE:
@@ -170,7 +190,6 @@ public class Game {
     return false;
   }
 
-  /** @return {@code true} if the game mode is {@link GameMode#DOUBLE}, {@code false} otherwise. */
   private boolean isDoubleMode() {
     return gameMode == GameMode.DOUBLE;
   }

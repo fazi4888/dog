@@ -35,7 +35,7 @@ public enum SceneSwitch {
   /** The scene for the root Node. */
   private Scene scene;
 
-  /** The jumping frog on the home & selection page. */
+  /** The jumping frog on the home and selection page. */
   private Frog frog;
 
   /**
@@ -83,7 +83,8 @@ public enum SceneSwitch {
    * @param nicknameB the nickname of player B
    * @see SelectionController#startGame()
    */
-  public void switchToGame(GameMode gameMode, GameLevel gameLevel, String nicknameA, String nicknameB) {
+  public void switchToGame(
+      GameMode gameMode, GameLevel gameLevel, String nicknameA, String nicknameB) {
     changeScene(FileName.VIEW_GAME);
 
     // initialize the game

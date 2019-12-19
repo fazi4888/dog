@@ -22,9 +22,8 @@ public class WorldLoader {
 
   /** The pane need to be drawn. */
   private Pane root;
-  /** The mode of the game. */
+
   private GameMode gameMode;
-  /** The level of the game. */
   private GameLevel gameLevel;
 
   private Frog frogA;

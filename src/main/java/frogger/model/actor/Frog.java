@@ -4,9 +4,11 @@ import frogger.constant.Death;
 import frogger.constant.Direction;
 import frogger.constant.FileName;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 
+/** A {@code Frog} is an object which is controlled by a player. */
 public class Frog extends Actor {
 
   private ArrayList<Image> moveImg;
@@ -18,16 +20,27 @@ public class Frog extends Actor {
   private double movementY = 25.4;
   private double movementX = 20;
 
+  /** If the frog is jumping. */
   private boolean isJumping;
+  /** If the frog has moved after rebirth. */
   private boolean hasJump;
+  /** If the frog can move. */
   private boolean noMove;
+
+  /** The type of the death. It will be NONE if the frog is alive. */
   private Death death;
+  /** The index of the death frame image. */
   private int deathImgIndex = 0;
 
+  /** The highest value in y coordinate of the frog ever reached. */
   private double highestY;
+  /** The score of the player who controls the frog. */
   private int score;
+  /** The life of the player who controls the frog. */
   private int life;
+  /** The number of the ends which are activated by the frog. */
   private int touchedEndAmount;
+  /** The nickname of the player who controls the frog. */
   private String nickname;
 
   public Frog(String imageLink, int xpos, int ypos) {
@@ -94,6 +107,14 @@ public class Frog extends Actor {
     if (life == 0) noMove = true;
   }
 
+  /**
+   * Makes the frog jump in a certain direction.
+   *
+   * @param direction the direction to jump
+   * @param isMoving if the frog is moving
+   * @see frogger.model.World#keyPressed(KeyEvent)
+   * @see frogger.model.World#keyReleased(KeyEvent)
+   */
   public void jump(Direction direction, boolean isMoving) {
     if (!hasJump && !isMoving) return;
     if (noMove && !isJumping) return;
@@ -122,6 +143,11 @@ public class Frog extends Actor {
     if (isMoving) hasJump = true;
   }
 
+  /**
+   * Called when the frog move forward.
+   *
+   * <p>If the move is valid. The player who controls the frog will gain 20 pt.
+   */
   private void checkValidForwardStep() {
     if (getY() < highestY) {
       gainScore(20);
@@ -129,15 +155,38 @@ public class Frog extends Actor {
     }
   }
 
+  /**
+   * If the frog falls into the water or be a roadkill, show the death frame.
+   *
+   * @param now the timestamp of the current frame given in nanoseconds
+   */
   @Override
   public void act(long now) {
     if (death == Death.CAR || death == Death.WATER) showDeathFrames(now, getDeath());
   }
 
   /**
+   * Shows the death frames.
+   *
+   * @param now the timestamp of the current frame given in nanoseconds
+   * @param death the type of the death
+   */
+  private void showDeathFrames(long now, Death death) {
+    noMove = true;
+    ArrayList<Image> currentDeathImg = (death == Death.CAR) ? carDeath : waterDeath;
+    if (deathImgIndex >= 0 && deathImgIndex < currentDeathImg.size()) {
+      setImage(currentDeathImg.get(deathImgIndex));
+      if (now % 11 == 0) deathImgIndex++;
+    } else {
+      loseLife();
+      rebirth();
+    }
+  }
+
+  /**
    * Called whe the frog touch an end with a fly.
    *
-   * <p>The plyer represented by the frog will gain extra 200 pt.
+   * <p>The player who controls the frog will gain extra 200 pt.
    */
   public void touchFlyEnd() {
     gainScore(200);
@@ -170,18 +219,6 @@ public class Frog extends Actor {
   public void touchLogOrTurtle(double speed) {
     if (death != Death.NONE) return;
     move(speed, 0);
-  }
-
-  private void showDeathFrames(long now, Death death) {
-    noMove = true;
-    ArrayList<Image> currentDeathImg = (death == Death.CAR) ? carDeath : waterDeath;
-    if (deathImgIndex >= 0 && deathImgIndex < currentDeathImg.size()) {
-      setImage(currentDeathImg.get(deathImgIndex));
-      if (now % 11 == 0) deathImgIndex++;
-    } else {
-      loseLife();
-      rebirth();
-    }
   }
 
   private void initStateImages() {

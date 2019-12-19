@@ -10,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 /** The {@code ScoreboardWriter} is a utility to write the player info to a scoreboard file. */
 public class ScoreboardWriter {
 
-  /** The file name of the scoreboard file. */
   private String destFileName;
 
   /**
