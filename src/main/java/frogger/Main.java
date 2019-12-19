@@ -15,11 +15,6 @@ public class Main extends Application {
     launch(args);
   }
 
-  /**
-   * Returns the primary stage of the application.
-   *
-   * @return the primary stage of the application
-   */
   public static Stage getPrimaryStage() {
     return primaryStage;
   }

@@ -6,6 +6,11 @@ import frogger.model.actor.*;
 
 import java.util.ArrayList;
 
+/**
+ * The {@code TouchHandler} is a utility to handle the touch event about the frog.
+ *
+ * <p><b>Note:</b> this class is a singleton with {@link Enum}.
+ */
 public enum TouchHandler {
   INSTANCE;
 
