@@ -7,14 +7,27 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/** The {@code ScoreboardWriter} is a utility to write the player info to a scoreboard file. */
 public class ScoreboardWriter {
 
   private String destFileName;
 
+  /**
+   * Constructs a new ScoreboardWriter.
+   *
+   * @param destFileName the file name of the scoreboard file
+   */
   public ScoreboardWriter(String destFileName) {
     this.destFileName = destFileName;
   }
 
+  /**
+   * Write a new line to the file.
+   *
+   * <p>The scoreboard file will be created if it does not exist.
+   *
+   * @param content the content need to be written
+   */
   public void write(String content) {
     new File(FileName.SCOREBOARD_DIR).mkdirs();
     File destFile = new File(FileName.SCOREBOARD_DIR + destFileName);

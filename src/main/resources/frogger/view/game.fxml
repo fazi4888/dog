@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import java.util.ArrayList?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="576.0" styleClass="root" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.GameController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="576.0" styleClass="root" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frogger.controller.GameController">
     <stylesheets>
         <URL value="@../css/game.css" />
         <URL value="@../css/musicbtn.css" />
@@ -47,12 +47,12 @@
                         <Image url="@../image/life.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="lifeB2" fitHeight="23.0" fitWidth="21.0" layoutX="506.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="lifeB3" fitHeight="23.0" fitWidth="21.0" layoutX="506.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../image/life.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="lifeB3" fitHeight="23.0" fitWidth="21.0" layoutX="529.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="lifeB2" fitHeight="23.0" fitWidth="21.0" layoutX="529.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../image/life.png" />
                     </image>

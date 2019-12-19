@@ -12,7 +12,7 @@ import javafx.animation.AnimationTimer;
  */
 public class HomeAnimation {
 
-  /** The Frog jumping on the screen. */
+  /** The frog jumping on the screen. */
   private Frog frog;
 
   /** Creates a new Frog and puts it in the initial position */

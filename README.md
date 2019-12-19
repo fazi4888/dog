@@ -17,7 +17,12 @@
 
 ## Build & Run
 
-To launch the app use the following command:
+Tested on:
+
+- Lab Machine
+- macOS Java 10 + JavaFX 10
+
+Build script:
 
 ```
 mvn clean compile package exec:java
@@ -29,7 +34,7 @@ The following dependencies will be downloaded:
 - javafx-fxml 11.0.2 (org.openjfx)
 - javafx-graphics 11.0.2 (org.openjfx)
 - javafx-media 11.0.2 (org.openjfx)
-- commens-io 2.6 (commons-io)
+- commons-io 2.6 (commons-io)
 
 ## Source File Structure
 
@@ -66,7 +71,7 @@ src
 
 ### Categorize The Resources
 
-At the beginning, there are so many images and all in one folder. I move them to the corresponding folders.
+At the beginning, there are so many images and all in one folder. I move them to the corresponding sub-folders.
 
 ### Use MVC Pattern
 
@@ -114,6 +119,6 @@ The player's name has a limitation of 8 characters and letters only.
 
 ## Finally
 
-I spent at least 100 hours on this project and I did try my best. Because of time, there are still some features that have not been added.
+I have spent at least 100 hours on this project and I have tried my best. Because of time, there are still some features that have not been added.
 
 Thanks to my boyfriend for giving me the inspiration of 2-player mode and I beat him in the game :)

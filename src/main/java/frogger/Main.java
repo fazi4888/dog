@@ -8,18 +8,12 @@ import javafx.stage.Stage;
 /** The {@code Main} class of the application. */
 public class Main extends Application {
 
-  /** The primary stage of the application. */
   private static Stage primaryStage;
 
   public static void main(String[] args) {
     launch(args);
   }
 
-  /**
-   * Returns the primary stage of the application.
-   *
-   * @return the primary stage of the application
-   */
   public static Stage getPrimaryStage() {
     return primaryStage;
   }

@@ -4,13 +4,16 @@ import frogger.model.actor.*;
 
 import java.util.ArrayList;
 
-public enum PreloadedActor {
-  INSTANCE;
+/**
+ * The {@code PreloadedActor} is an object to store two frogs, ends and other actors in different
+ * game level.
+ */
+public class PreloadedActor {
 
-  public Frog frogA = new Frog(FileName.IMAGE_FROG_UP, 100, 720);
-  public Frog frogB = new Frog(FileName.IMAGE_FROG_UP, 450, 720);
+  public static Frog frogA = new Frog(FileName.IMAGE_FROG_UP, 100, 720);
+  public static Frog frogB = new Frog(FileName.IMAGE_FROG_UP, 450, 720);
 
-  public ArrayList<End> ends =
+  public static ArrayList<End> ends =
       new ArrayList<>() {
         {
           add(new End(11, 101));
@@ -21,7 +24,7 @@ public enum PreloadedActor {
         }
       };
 
-  public ArrayList<AutomaticActor> easyAutoActors =
+  public static ArrayList<AutomaticActor> easyAutoActors =
       new ArrayList<>() {
         {
           add(new Log(FileName.IMAGE_LOG_SHORT, 125, 0, 166, 0.75));
@@ -53,7 +56,7 @@ public enum PreloadedActor {
         }
       };
 
-  public ArrayList<AutomaticActor> mediumAutoActors =
+  public static ArrayList<AutomaticActor> mediumAutoActors =
       new ArrayList<>() {
         {
           add(new Log(FileName.IMAGE_LOG_SHORT, 125, 0, 166, 1));
@@ -86,7 +89,7 @@ public enum PreloadedActor {
         }
       };
 
-  public ArrayList<AutomaticActor> hardAutoActors =
+  public static ArrayList<AutomaticActor> hardAutoActors =
       new ArrayList<>() {
         {
           add(new Log(FileName.IMAGE_LOG_SHORT, 125, 0, 166, 1));

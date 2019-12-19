@@ -3,16 +3,21 @@ package frogger.model.actor;
 import frogger.constant.FileName;
 import javafx.scene.image.Image;
 
+/**
+ * A {@code End} is a home of the {@link Frog} in the game.
+ */
 public class End extends AutomaticActor {
 
+  /** Is there a fly among the five ends. */
   static boolean isFlyIn = false;
+  /** Is there a fly in this end. */
+  private boolean isFlyInThisEnd = false;
 
   private Image end;
   private Image frogEnd;
   private Image flyEnd;
 
   boolean activated = false;
-  private boolean isFlyInThisEnd = false;
 
   public End(int xpos, int ypos) {
     super(FileName.IMAGE_END, xpos, ypos, 56, 56, 0);
@@ -39,6 +44,7 @@ public class End extends AutomaticActor {
     }
   }
 
+  /** Sets a fly in the end. */
   private void setFly() {
     int randomIndex = (int) (Math.random() * 5);
     if (randomIndex == 3 && !isFlyIn) {
@@ -48,12 +54,18 @@ public class End extends AutomaticActor {
     }
   }
 
+  /** Clears the fly in the end. */
   private void clearFly() {
     setImage(end);
     isFlyIn = false;
     isFlyInThisEnd = false;
   }
 
+  /**
+   * Called when the frog touch the end.
+   *
+   * <p>Sets a frog in the end.
+   */
   public void setFrog() {
     if (isFlyInThisEnd) {
       isFlyInThisEnd = false;

@@ -35,7 +35,7 @@ public enum SceneSwitch {
   /** The scene for the root Node. */
   private Scene scene;
 
-  /** The jumping frog on the home & selection page. */
+  /** The jumping frog on the home and selection page. */
   private Frog frog;
 
   /**
