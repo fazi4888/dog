@@ -10,14 +10,31 @@ import frogger.util.WorldLoader;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 
+/**
+ * A {@code Game} will be created when the player starts a new game.
+ *
+ * @see SceneSwitch#switchToGame(GameMode, GameLevel, String nicknameA, String nicknameB)
+ */
 public class Game {
 
+  /** The {@link World} of the game. */
   private World world;
-
+  /** The {@link GameController} of the game view. */
   private GameController gameController;
+  /** The {@link GameMode} of the game. */
   private GameMode gameMode;
+  /** The {@link GameLevel} of the game. */
   private GameLevel gameLevel;
 
+  /**
+   * Constructs a new {@code Game} with the specified parameters and creates a new {@link World} of
+   * the game.
+   *
+   * @param gameController the {@link GameController} of the game view
+   * @param gameMode the {@link GameMode} of the game
+   * @param gameLevel the {@link GameLevel} of the game
+   * @param root the {@link Pane} that is expected to be drawn
+   */
   public Game(GameController gameController, GameMode gameMode, GameLevel gameLevel, Pane root) {
     this.gameController = gameController;
     this.gameMode = gameMode;
@@ -26,6 +43,7 @@ public class Game {
     initGameScreen();
   }
 
+  /** Hides the information of player B if the game mode is single. */
   private void initGameScreen() {
     if (!isDoubleMode()) gameController.hidePlayerBInfo();
   }
@@ -34,11 +52,23 @@ public class Game {
     return world;
   }
 
+  /**
+   * Sets the nickname of players.
+   *
+   * @param nicknameA the nickname of the player A
+   * @param nicknameB the nickname of the player B
+   * @see SceneSwitch#switchToGame(GameMode, GameLevel, String, String)
+   */
   public void setPlayerName(String nicknameA, String nicknameB) {
     if (!nicknameA.equals("")) world.getFrogA().setNickname(nicknameA);
     if (isDoubleMode() && !nicknameB.equals("")) world.getFrogB().setNickname(nicknameB);
   }
 
+  /**
+   * AnimationTimer for the game.
+   *
+   * <p>It will update the score and life of players and check if game is over.
+   */
   private AnimationTimer timer =
       new AnimationTimer() {
         @Override
@@ -50,10 +80,18 @@ public class Game {
         }
       };
 
+  /** Starts the game. */
   public void startGame() {
     timer.start();
   }
 
+  /**
+   * Ends the game and updates the prompt on the screen. If the game mode is {@code DOUBLE}, a
+   * scoreboard will be popped up.
+   *
+   * @see #generatePrompt()
+   * @see SceneSwitch#showScoreboard(String)
+   */
   private void endGame() {
     timer.stop();
     if (!isDoubleMode()) {
@@ -64,6 +102,11 @@ public class Game {
     gameController.updateBackBtn();
   }
 
+  /**
+   * Write the player's info to the scoreboard file.
+   *
+   * @see ScoreboardWriter
+   */
   private void recordScore() {
     String nickname = getWorld().getFrogA().getNickname();
     String score = String.format("%04d", getWorld().getFrogA().getScore());
@@ -72,6 +115,11 @@ public class Game {
     scoreboardWriter.write(nickname + ";" + score + "\n");
   }
 
+  /**
+   * Generates the prompt according to the game mode and the score of two players.
+   *
+   * @return the prompt be generated
+   */
   private String generatePrompt() {
     String prompt;
     if (!isDoubleMode()) {
@@ -91,18 +139,33 @@ public class Game {
     return prompt;
   }
 
+  /**
+   * Updates the score of players.
+   *
+   * @see GameController#updateScore(int, int)
+   */
   private void updateScore() {
     int scoreA = world.getFrogA().getScore();
     int scoreB = isDoubleMode() ? world.getFrogB().getScore() : 0;
     gameController.updateScore(scoreA, scoreB);
   }
 
+  /**
+   * Updates the life of players.
+   *
+   * @see GameController#updateLife(int, int)
+   */
   private void updateLife() {
     int lifeA = world.getFrogA().getLife();
     int lifeB = isDoubleMode() ? world.getFrogB().getLife() : 0;
     gameController.updateLife(lifeA, lifeB);
   }
 
+  /**
+   * Check if the player is win
+   *
+   * @return {@code true} if in single mode, the frog touches all ends, {@code false} otherwise
+   */
   private boolean checkWin() {
     if (!isDoubleMode()) {
       for (End end : world.getEnds()) {
@@ -112,6 +175,11 @@ public class Game {
     } else return false;
   }
 
+  /**
+   * Check if the player has lose all life.
+   *
+   * @return {@code true} if all players lose all life, {@code false} otherwise
+   */
   private boolean checkLose() {
     switch (gameMode) {
       case SINGLE:

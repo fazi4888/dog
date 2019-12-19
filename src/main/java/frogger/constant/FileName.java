@@ -4,8 +4,10 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 
+/** The {@code FileName} is a class storing file names. */
 public class FileName {
-  public static final String SCOREBOARD_DIR = FileUtils.getUserDirectoryPath() + File.separator + ".frogger" + File.separator;
+  public static final String SCOREBOARD_DIR =
+      FileUtils.getUserDirectoryPath() + File.separator + ".frogger" + File.separator;
 
   public static final String VIEW_HOME = "/frogger/view/home.fxml";
   public static final String VIEW_SELECTION = "/frogger/view/selection.fxml";

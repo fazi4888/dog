@@ -10,10 +10,14 @@ import javafx.scene.control.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+/** The {@code ScoreboardController} is a controller for the scoreboard view. */
 public class ScoreboardController {
 
+  /** The list of abbreviations of ranks. */
   @FXML private ListView<String> rankList;
+  /** The list of top 10 players' name. */
   @FXML private ListView<String> nameList;
+  /** The list of top 10 players' score. */
   @FXML private ListView<String> scoreList;
 
   private List<String> ranks = new ArrayList<>();
@@ -26,6 +30,7 @@ public class ScoreboardController {
     this.gameLevel = gameLevel;
   }
 
+  /** Initializes the data and list view. */
   public void init() {
     initData();
     initListView(ranks, rankList);
@@ -33,6 +38,7 @@ public class ScoreboardController {
     initListView(scores, scoreList);
   }
 
+  /** Reads data from the scoreboard file. */
   private void initData() {
     ranks.add("RANK");
     names.add("NAME");

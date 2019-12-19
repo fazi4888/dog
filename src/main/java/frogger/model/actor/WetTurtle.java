@@ -5,9 +5,13 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
+/** Horizontal moving wet turtles in the game. */
 public class WetTurtle extends AutomaticActor implements Transformable {
 
+  /** If the wet turtle is sunk. */
   private boolean sunk = false;
+
+  /** The image of different states of the wet turtle. */
   private ArrayList<Image> turtleStates;
 
   public WetTurtle(String imageLink, int xpos, int ypos, int width, double speed) {
@@ -26,12 +30,19 @@ public class WetTurtle extends AutomaticActor implements Transformable {
     return sunk;
   }
 
+  /**
+   * Transform the state of the wet turtle.
+   *
+   * @param now the timestamp of the current frame given in nanoseconds
+   * @see #transform(long)
+   */
   @Override
   public void act(long now) {
     super.act(now);
     transform(now);
   }
 
+  /** Transform the state of the wet turtle. */
   @Override
   public void transform(long now) {
     int stateIndex = (int) (now / 900000000 % 4);
